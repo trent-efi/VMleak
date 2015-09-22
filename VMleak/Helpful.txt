@@ -1,0 +1,15 @@
+Pearl Script for Pass/Fail:
+http://cear-codesearch/lxr2/calcReqSummary?reqId=734566&recurs=5
+
+Full Test Suite result:
+http://calculus.efi.com/requests/734566#
+
+MySQL Stuff:
+mysql:database=calculus:host=fcldb07', 'calculusread', 'dev45auth'
+
+mysql:database=calculus:host=fcldb07', 'calculusread', 'dev45auth'
+
+Localhost:
+http://localhost/trent.php
+
+
