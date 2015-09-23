@@ -26,14 +26,23 @@
     </head>
     <body>
         <div id="header_bar"><img id="logo" src="/img/logo.png"></div>
-	
-	<div id="chart1" style="height:700px; width:1750px;"></div>
-	<div style="padding-top:20px"><button value="reset" type="button" onclick="plot1.resetZoom();">Reset Zoom</button></div>
-
-        <div><button value="STUFF" type="button" onclick="update_chart( '<?php echo generate_full_file_list($filenum)?>', 'hello' );">DO STUFF</button></div>
-
+        <center>
+        <table id="main_table">
+	    <tr>
+		<td id="row" ><div id="checkbox_group">LIST HERER</div></td>	    
+	        <td id="row">
+		    <center><h1>Compared Data Useage Between Resets During Testing:</h1></center>
+	            <center><div id="chart1" style="height:700px; width:1600px;"></div></center>
+	            <div style="padding-top:20px"><button value="reset" type="button" onclick="plot1.resetZoom();">Reset Zoom</button></div>
+                    <div><button value="STUFF" type="button" onclick="update_chart( '<?php echo generate_full_file_list($filenum)?>', 'hello' );">DO STUFF</button></div>
+	        </td>
+	    </tr>
+        </table>
+	</center>
 	<script class="code" type="text/javascript">
-
+            
+	    
+ 
 	    /*************************************************************************
 	     * Generates the graph on loading of the page
 	     ************************************************************************/
@@ -74,7 +83,7 @@
                     },
 	            legend: {
                         show: true,
-                        placement: 'outside'
+                        placement: 'inside'
                     },
                     cursor: {
                         show: true,
@@ -82,13 +91,26 @@
                     },
 	            series:[ <?php echo $series;?> ], 
                 });
+
+                //OTHER FUNCTIONS TO LOAD AT THE START
+		generate_checkbox('<?php echo generate_full_file_list($filenum);?>');
             });
+
+            function generate_checkbox(file_list){
+                $.ajax({
+		    data: {"function":"build_checkboxes", "file_list":"<?php echo generate_full_file_list($filenum); ?>"},
+		    url: "viewcontroller.php",
+		    method: "POST",
+		    success: function(str){
+		        $("#checkbox_group").html(str);  
+		    }
+		});
+	    }
 
             /******************************************************************
 	     * Updates the chart with with new data.
 	     *****************************************************************/
 	    function update_chart(data, series){
-	        alert(data);
                 /*$.jqplot.config.enablePlugins = true;
                 plot1 = $.jqplot ('chart1', data, {     
                     highlighter: {

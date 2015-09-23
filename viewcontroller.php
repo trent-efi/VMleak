@@ -1,5 +1,11 @@
 <?php 
 
+    $action = $_POST['function'];
+    switch($action){
+        case 'build_checkboxes': $file_list = $_POST['file_list']; echo build_checkboxes($file_list); break;
+    }
+
+
     /**************************************************************************
      * Takes in a string of file names and returns an array of numbers for
      * JQplot to use for the graph. Calls external Python script to do 
@@ -32,6 +38,17 @@
           
 	return $output;
     }   
+    
+    /**************************************************************************
+     * ///////////////////////////AJAX Functions://///////////////////////////
+     *************************************************************************/
 
 
+    /**************************************************************************
+     * Builds a Checkbox group in a form. Called from AJAX.
+     *************************************************************************/
+    function build_checkboxes($file_list){
+        $result = $file_list;
+        return $result;
+    }
 ?>
