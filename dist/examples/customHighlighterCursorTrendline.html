@@ -16,6 +16,8 @@
    
 </head>
 <body>
+<div class="example-plot" id="chart1" style="height:700px; width:1750px;"></div>  
+
     <div id="header">
         <div class="nav">
             <a class="nav" href="../../../index.php"><span>&gt;</span>Home</a>
@@ -29,7 +31,6 @@
       <div class="colleft">
         <div class="col1" id="example-content">
 
-<div class="example-plot" id="chart1"></div>  
 <!-- Example scripts go here -->
 
   <script class="code" type="text/javascript">
@@ -38,34 +39,40 @@
 
       $.jqplot.config.enablePlugins = true;
 
-      s1 = [['23-May-08',1],['24-May-08',4],['25-May-08',2],['26-May-08', 6]];
-
-      plot1 = $.jqplot('chart1',[s1],{
+//      s1 = [['23-May-08',1],['24-May-08',4],['25-May-08',2],['26-May-08', 6]];
+      s1 = [25132, 133972, 48564, 229924, 214956, 73776, 0, 0, 2108, 0, 25776];
+      s2 = [16964, 138200, 50612, 104456, 171984, 75504, 0, 0, 2100, 0, 24832];
+      s3 = [-1032, 118952, 65728, 231980, 171956, 75432, 0, 0, 2056, 0, 24760];
+      plot1 = $.jqplot('chart1',[s1, s2, s3],{
          title: 'Highlighting, Dragging, Cursor and Trend Line',
-         axes: {
-             xaxis: {
-                 renderer: $.jqplot.DateAxisRenderer,
-                 tickOptions: {
-                     formatString: '%#m/%#d/%y'
-                 },
-                 numberTicks: 4
-             },
-             yaxis: {
-                 tickOptions: {
-                     formatString: '$%.2f'
-                 }
-             }
-         },
-         highlighter: {
-             sizeAdjust: 10,
+          highlighter: {
+             sizeAdjust: 14,
              tooltipLocation: 'n',
              tooltipAxes: 'y',
-             tooltipFormatString: '<b><i><span style="color:red;">hello</span></i></b> %.2f',
+             //tooltipFormatString: '<b><i><span style="color:red;">hello</span></i></b> %.2f',
+             formatString:'#serieLabel# - %s',
              useAxesFormatters: false
          },
+	 legend: {
+            show: true,
+            placement: 'outside'
+        },
          cursor: {
-             show: true
-         }
+             show: true,
+             zoom: true
+
+         },
+	 series:[
+               {
+                  highlighter: { formatString: 'serie1: %s, %s'}
+              },
+	      {
+                  highlighter: { formatString: 'serie2: %s, %s'}
+              },
+	      {
+                  highlighter: { formatString: 'serie3: %s, %s'}
+              }
+           ], 
       });
     });
 </script>
@@ -88,9 +95,7 @@
     <script class="include" type="text/javascript" src="../plugins/jqplot.categoryAxisRenderer.min.js"></script>
     <script class="include" type="text/javascript" src="../plugins/jqplot.cursor.min.js"></script>
     <script class="include" type="text/javascript" src="../plugins/jqplot.highlighter.min.js"></script>
-    <script class="include" type="text/javascript" src="../plugins/jqplot.dragable.min.js"></script>
-    <script class="include" type="text/javascript" src="../plugins/jqplot.trendline.min.js"></script> 
-
+    
 <!-- End additional plugins -->
 
         </div>
