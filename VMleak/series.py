@@ -18,24 +18,4 @@ for line in files:
 
 print data 
 
-#    retStr = "{ highlighter: { formatString: '"+line+": %s, %s'}, label: '"+line+"' },"
-
-'''
-               {
-                  highlighter: { formatString: 'First: %s, %s'},
-		  color: 'red',
-		  label: 'First'
-              },
-	      {
-                  highlighter: { formatString: 'Second: %s, %s'},
-		  color: 'blue',
-		  label: 'Second'
-              },
-	      {
-                  highlighter: { formatString: 'Third: %s, %s'},
-		  color: 'green',
-		  label: 'Third'
-              }
-
-'''
 

@@ -4,9 +4,10 @@
     $filenum = 8;
 
     //$output = shell_exec('python /var/www/html/VMleak/external.py '.$filenum.' 2>&1');
-    $output = shell_exec('python /var/www/html/VMleak/external.py '.$filenum);
-    $series = shell_exec('python /var/www/html/VMleak/series.py '.$filenum);
-
+    //$output = shell_exec('python /var/www/html/VMleak/external.py '.$filenum);
+    //$series = shell_exec('python /var/www/html/VMleak/series.py '.$filenum);
+    $series = generate_series_data($filenum);
+    $output = generate_delta( generate_full_file_list($filenum) ); 
 ?>
 <!DOCTYPE html>
 <html>
