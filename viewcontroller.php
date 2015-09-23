@@ -27,8 +27,8 @@
      * Generates a string used by JQplot to handel the tooltip and legend for
      * the graph.
      *************************************************************************/
-    function generate_series_data($filenum){
-        $output = shell_exec('python /var/www/html/VMleak/series.py '.$filenum);
+    function generate_series_data($file_list){
+        $output = shell_exec('python /var/www/html/VMleak/series.py '.$file_list);
           
 	return $output;
     }   
