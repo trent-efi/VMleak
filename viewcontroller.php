@@ -24,7 +24,8 @@
     function generate_full_file_list($filenum){
         $output = shell_exec('ls -t /var/www/html/VMleak/*xt*.txt | head -n '.$filenum);
 	$output = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $output);
-	$output = str_replace("/var/www/html/VMleak/"," ",$output);
+        $output = str_replace("/var/www/html/VMleak/"," ",$output);
+        $output = substr($output, 1);
 	
 	return $output;
     }
@@ -38,17 +39,28 @@
           
 	return $output;
     }   
-    
+   
+
+  
     /**************************************************************************
-     * ///////////////////////////AJAX Functions://///////////////////////////
+     * ///////////////////////////AJAX Functions://////////////////////////// *
      *************************************************************************/
 
 
     /**************************************************************************
-     * Builds a Checkbox group in a form. Called from AJAX.
+     * Builds a Checkbox group in an html form. Called from AJAX.
      *************************************************************************/
     function build_checkboxes($file_list){
-        $result = $file_list;
+        $file_list = $file_list.trim();
+        $arr = array();
+        $arr = explode(" ", $file_list);
+
+        $result = "<form><div><div><input type=\"checkbox\" name=\"file_name\" value=\"all\">Show All Files</div>";
+        foreach($arr as $value){
+	    $result = $result."<div><input type=\"checkbox\" name=\"file_name\" value=\"".$value."\">".$value."</div>";
+	}
+        $result = $result."</div></form>";
+
         return $result;
     }
 ?>
