@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     include 'viewcontroller.php';
 
 //    $filenum = 10;
@@ -28,7 +30,7 @@
         <center>
         <table id="main_table">
 	    <tr>
-		<td id="row"><div id="checkbox_group"></div></td>	    
+		<td id="row"><div id="checkbox_group"></div><div><button value="add_file" type="button" onclick="add_to_checkboxes()">Add a File</div></td>	    
 	        <td id="row">
 		    <center><h1>Compared Data Useage Between Resets During Testing:</h1></center>
 	            <center><div id="chart1" style="height:700px; width:1600px;"></div></center>
@@ -38,7 +40,24 @@
         </table>
 	</center>
 	<script class="code" type="text/javascript">
-            
+
+            var plot1;
+
+            function generate_checkbox(file_list){
+                $.ajax({
+		    data: {"function":"build_checkboxes", "file_list":"<?php echo generate_full_file_list($filenum); ?>"},
+		    url: "viewcontroller.php",
+		    method: "POST",
+		    success: function(str){
+		        $("#checkbox_group").html(str);  
+		    }
+		});
+	    }
+
+            function add_to_checkboxes(){
+	        alert("UP IN HERERER");
+	    }
+
 	    /******************************************************************
 	     * This looks for an event with a change in a checkbox group and
 	     * will call php functions through ajax to get the updated data
@@ -48,7 +67,7 @@
 	     *****************************************************************/
 	    $("#checkbox_group").change(function() { 
                 var list = $("input[name=file_name]:checked").map( function () { return this.value; } ).get().join(" ");
-                var delta = "delta";
+                var delta = [];
 		var series = "series";
 
                 $.when(
@@ -57,7 +76,7 @@
                         type: 'POST',
                         data: {'function': 'get_delta', 'file_list': list},
 			success: function(str){
-			    delta = str;
+			    delta = JSON.parse(str);    
 			}
                     }), 
 		    $.ajax({
@@ -65,7 +84,8 @@
                         type: 'POST',
                         data: {'function': 'get_series', 'file_list': list},
 			success: function(str){
-			    series = str;
+			    /*TODO: Make this work... Using a Session variable for now...*/
+			    //series = str;
 			}
                     })
 		).done(function() {
@@ -123,24 +143,19 @@
             });
           
 
-            function generate_checkbox(file_list){
-                $.ajax({
-		    data: {"function":"build_checkboxes", "file_list":"<?php echo generate_full_file_list($filenum); ?>"},
-		    url: "viewcontroller.php",
-		    method: "POST",
-		    success: function(str){
-		        $("#checkbox_group").html(str);  
-		    }
-		});
-	    }
-
             /******************************************************************
 	     * Updates the chart with with new data.
 	     *****************************************************************/
 	    function update_chart(delta, series){
-	        //alert(series);
-                /*$.jqplot.config.enablePlugins = true;
-                plot1 = $.jqplot ('chart1', data, {     
+	        
+	        updatePlot(delta, series);
+		plot1.replot();
+	    }
+
+	    function updatePlot(delta, _series){
+                console.log(<?php echo $file_list;?>);
+
+                plot1 = $.jqplot('chart1', delta, {     
                     highlighter: {
                         sizeAdjust: 14,
                         tooltipLocation: 'n',
@@ -163,19 +178,23 @@
                     },
 	            legend: {
                         show: true,
-                        placement: 'outside'
+                        placement: 'inside'
                     },
                     cursor: {
                         show: true,
                         zoom: true
                     },
-	            series:[ series ], 
-                });*/ 
-	    } 
+	            series: [ <?php echo generate_series_data($_SESSION['file_list']);?> ]  
+                });
+            }
+
+	    
         </script>
-        <div><?php echo "SERIES:".$series; ?></div></br>
+
+
+        <div><?php echo var_dump($_SESSION['file_list']); ?></div></br>
 	<div><?php echo "OUTPUT:".$output; ?></div>
-        <script class="include" type="text/javascript" src="/dist/jquery.jqplot.min.js"></script>
+        <script class="include" type="text/javascript" src="/dist/jquery.jqplot.js"></script>
         <script type="text/javascript" src="/dist/syntaxhighlighter/scripts/shCore.min.js"></script>
         <script type="text/javascript" src="/dist/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>
         <script type="text/javascript" src="/dist/syntaxhighlighter/scripts/shBrushXml.min.js"></script>

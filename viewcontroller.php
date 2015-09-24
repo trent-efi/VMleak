@@ -1,13 +1,15 @@
 <?php 
 
+    session_start();
+
     $filenum = 14;
-    //$file_list = "";
+    $file_list = "";
 
     $action = $_POST['function'];
     switch($action){
-        case 'build_checkboxes': $file_list = $_POST['file_list']; echo build_checkboxes($file_list); break;
-	case 'get_delta': $file_list = $_POST['file_list']; echo generate_delta($file_list); break;
-	case 'get_series': $file_list = $_POST['file_list']; echo generate_series_data($file_list); break;
+        case 'build_checkboxes': $file_list = $_POST['file_list']; $_SESSION['file_list'] = $file_list; echo build_checkboxes($file_list); break;
+	case 'get_delta': $file_list = $_POST['file_list']; $_SESSION['file_list'] = $file_list; echo generate_delta($file_list); break;
+	case 'get_series': $file_list = $_POST['file_list']; $_SESSION['file_list'] = $file_list; echo generate_series_data($file_list); break;
     }
 
 
@@ -44,13 +46,6 @@
           
 	return $output;
     }   
-   
-
-  
-    /**************************************************************************
-     * ///////////////////////////AJAX Functions://////////////////////////// *
-     *************************************************************************/
-
 
     /**************************************************************************
      * Builds a Checkbox group in an html form. Called from AJAX.
