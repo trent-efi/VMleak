@@ -1,0 +1,10 @@
+               
+                /*var arr = <?php echo $output;?>;
+
+                for (i = 0; i < arr.length; i++) {
+                    entry = arr[i];
+		    console.log("///NEW ARR///");
+                    for (j = 0; j < entry.length; j++) {
+                        console.log( entry[j] );
+                    }
+                }*/

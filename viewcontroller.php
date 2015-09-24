@@ -1,8 +1,13 @@
 <?php 
 
+    $filenum = 14;
+    //$file_list = "";
+
     $action = $_POST['function'];
     switch($action){
         case 'build_checkboxes': $file_list = $_POST['file_list']; echo build_checkboxes($file_list); break;
+	case 'get_delta': $file_list = $_POST['file_list']; echo generate_delta($file_list); break;
+	case 'get_series': $file_list = $_POST['file_list']; echo generate_series_data($file_list); break;
     }
 
 
@@ -55,11 +60,15 @@
         $arr = array();
         $arr = explode(" ", $file_list);
 
-        $result = "<form><div><div><input type=\"checkbox\" name=\"file_name\" value=\"all\">Show All Files</div>";
+       	$result = "";
+
+	/*if($arr != null){
+	    $result = "<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\"all\" checked>Show All Files";
+	}*/
+
         foreach($arr as $value){
-	    $result = $result."<div><input type=\"checkbox\" name=\"file_name\" value=\"".$value."\">".$value."</div>";
+	    $result = $result."<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\"".$value."\" checked>".$value."</div>";
 	}
-        $result = $result."</div></form>";
 
         return $result;
     }
