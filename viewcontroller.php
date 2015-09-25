@@ -12,7 +12,7 @@
 	case 'get_delta': $file_list = $_POST['file_list']; echo generate_delta($file_list); break;
 	case 'get_series': $file_list = $_POST['file_list']; echo generate_series_data($file_list); break;
 	case 'set_series': $file_list = $_POST['file_list']; set_series($file_list); echo $_SESSION['series']; break;
-	//case 'set_series': echo "HERER"; break;
+	case 'get_node_details': $file_name = $_POST['file_name']; $index = $_POST['index']; echo get_node_details($file_name, $index); break;
     }
 
 //{ "highlighter": { "formatString": "737384xt4.txt: %s, %s"}, "label": "737384xt4.txt"}, { "highlighter": { "formatString": "737364xt4.txt: %s, %s"}, "label": "737364xt4.txt" }, 
@@ -81,14 +81,15 @@
 
        	$result = "";
 
-	/*if($arr != null){
-	    $result = "<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\"all\" checked>Show All Files";
-	}*/
-
         foreach($arr as $value){
 	    $result = $result."<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\"".$value."\" checked>".$value."</div>";
 	}
 
         return $result;
+    }
+
+    function get_node_details($file_name, $index){
+        $output = shell_exec('python /var/www/html/VMleak/node_details.py '.$file_name.' '.$index);
+        return $output;
     }
 ?>

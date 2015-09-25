@@ -51,8 +51,16 @@
             plot1 = undefined;
 
             $('#chart1').bind('jqplotDataClick', function (ev, seriesIndex, pointIndex, data) {
+                $.ajax({
+		    data: {"function":"get_node_details", "file_name": plot1.options.series[seriesIndex].label, "index": pointIndex },
+		    url: "viewcontroller.php",
+		    method: "POST",
+		    success: function(str){
+		        alert(str);
+		    }
+		});
 	            
-                alert(JSON.stringify(plot1.options) + "\n" + seriesIndex + "\n" + plot1.options.series[seriesIndex].label + "\n" + pointIndex + "\n" + data );
+                //alert(JSON.stringify(plot1.options) + "\n" + seriesIndex + "\n" + plot1.options.series[seriesIndex].label + "\n" + pointIndex + "\n" + data );
             });
 
 
