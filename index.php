@@ -47,7 +47,15 @@
 
  
 
-        <script>
+	<script class="code" type="text/javascript">
+            plot1 = undefined;
+
+            $('#chart1').bind('jqplotDataClick', function (ev, seriesIndex, pointIndex, data) {
+	            
+                alert(JSON.stringify(plot1.options) + "\n" + seriesIndex + "\n" + plot1.options.series[seriesIndex].label + "\n" + pointIndex + "\n" + data );
+            });
+
+
             document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	
             function handleFileSelect(evt) {
@@ -64,11 +72,6 @@
                 add_to_checkboxes();
 	    }
 
-        </script>
-
-	<script class="code" type="text/javascript">
-
-            plot1 = undefined;
 
             function generate_checkbox(file_list){
                 $.ajax({
@@ -88,7 +91,6 @@
 		console.log("LIST IN ONCHANGE: "+list);
                 var delta = [];
 		var series = "";
-                <?php $_SESSION['series'] = "";?>
 		$.ajax({
                     url: 'viewcontroller.php',
                     type: 'POST',
