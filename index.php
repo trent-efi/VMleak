@@ -34,7 +34,7 @@
         <center>
         <table id="main_table">
 	    <tr>
-		<td id="row"><div id="checkbox_group"></div><div><!--<button value="add_file" type="button" onclick="add_to_checkboxes()">Add a File--></div></td>	    
+		<td id="row"><div id="checkbox_group"></div><div><input type="file" id="files" name="files[]" multiple /></div></td>	    
 	        <td id="row">
 		    <center><h1>Compared Data Useage Between Resets During Testing:</h1></center>
 	            <center><div id="chart1" style="height:700px; width:1600px;"></div></center>
@@ -45,11 +45,10 @@
 	</center>
 
 
-<!--	<input type="file" id="files" name="files[]" multiple />
-        <output id="list"></output> -->
+ 
 
         <script>
-/*            document.getElementById('files').addEventListener('change', handleFileSelect, false);
+            document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	
             function handleFileSelect(evt) {
                 var files = evt.target.files; // FileList object
@@ -64,7 +63,7 @@
 	        $("#checkbox_group").append(str);
                 add_to_checkboxes();
 	    }
-*/
+
         </script>
 
 	<script class="code" type="text/javascript">
@@ -84,36 +83,32 @@
 
             
 
-/*            function add_to_checkboxes(){
-	        var list = $("input[name=file_name]:checked").map( function () { return this.value; } ).get().join(" ");
-		console.log(list);
+            function add_to_checkboxes(){
+                var list = $("input:checkbox:checked").map( function () { return this.value; } ).get().join(" ");
+		console.log("LIST IN ONCHANGE: "+list);
                 var delta = [];
-		var series = "series";
+		var series = "";
+                <?php $_SESSION['series'] = "";?>
+		$.ajax({
+                    url: 'viewcontroller.php',
+                    type: 'POST',
+                    data: {'function': 'get_delta', 'file_list': list},
+		    success: function(str0){
+		        delta = JSON.parse(str0);
+                        //alert("1");
+		        $.ajax({
+                            url: 'viewcontroller.php',
+                            type: 'POST',
+                            data: {'function': 'get_series', 'file_list': list},
+			    success: function(str1){
+			        series = JSON.parse("["+str1+"]") 
+                                update_chart(delta, series );
+			    }//end success
+                        })//end ajax
+		    }//end success
+                })//end ajax
+	    }//end add_to_checkboxes()
 
-                $.when(
-		    $.ajax({
-                        url: 'viewcontroller.php',
-                        type: 'POST',
-                        data: {'function': 'get_delta', 'file_list': list},
-			success: function(str){
-			    delta = JSON.parse(str);    
-			}
-                    }), 
-		    $.ajax({
-                        url: 'viewcontroller.php',
-                        type: 'POST',
-                        data: {'function': 'get_series', 'file_list': list},
-			success: function(str){
-			    //TODO: Make this work... Using a Session variable for now...
-			    //series = str;
-			}
-                    })
-		).done(function() {
-                    update_chart(delta, series);
-                });
- 
-	    }
-*/
 
 	    /******************************************************************
 	     * This looks for an event with a change in a checkbox group and
@@ -244,7 +239,15 @@
                     },
 	            series: [  ]  
                 };
-		//alert(JSON.stringify( options, null, 4));
+
+                if(Object.keys(delta).length == 0 ){
+		    delta = [[null]]; 
+		    options.legend.show = false;
+		} else {
+		    options.legend.show = true;
+		}
+
+		//alert(JSON.stringify( _series, null, 4));
 		
 		options.series = _series;
 	        		
