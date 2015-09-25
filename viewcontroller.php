@@ -2,7 +2,7 @@
 
     session_start();
 
-    $filenum = 14;
+    $filenum = 3;
     $file_list = "";
 
     $action = $_POST['function'];
