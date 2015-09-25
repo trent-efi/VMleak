@@ -2,17 +2,20 @@
 
     session_start();
 
-    $filenum = 3;
-    $file_list = "";
+    $filenum = 4;
+    //$file_list = "";
+    $_series = "INITIAL";
 
     $action = $_POST['function'];
     switch($action){
-        case 'build_checkboxes': $file_list = $_POST['file_list']; $_SESSION['file_list'] = $file_list; echo build_checkboxes($file_list); break;
-	case 'get_delta': $file_list = $_POST['file_list']; $_SESSION['file_list'] = $file_list; echo generate_delta($file_list); break;
-	case 'get_series': $file_list = $_POST['file_list']; $_SESSION['file_list'] = $file_list; echo generate_series_data($file_list); break;
+        case 'build_checkboxes': $file_list = $_POST['file_list']; echo build_checkboxes($file_list); break;
+	case 'get_delta': $file_list = $_POST['file_list']; echo generate_delta($file_list); break;
+	case 'get_series': $file_list = $_POST['file_list']; echo generate_series_data($file_list); break;
+	case 'set_series': $file_list = $_POST['file_list']; set_series($file_list); echo $_SESSION['series']; break;
+	//case 'set_series': echo "HERER"; break;
     }
 
-
+//{ "highlighter": { "formatString": "737384xt4.txt: %s, %s"}, "label": "737384xt4.txt"}, { "highlighter": { "formatString": "737364xt4.txt: %s, %s"}, "label": "737364xt4.txt" }, 
     /**************************************************************************
      * Takes in a string of file names and returns an array of numbers for
      * JQplot to use for the graph. Calls external Python script to do 
@@ -43,9 +46,18 @@
      *************************************************************************/
     function generate_series_data($file_list){
         $output = shell_exec('python /var/www/html/VMleak/series.py '.$file_list);
-          
+        //set_series($output); 
 	return $output;
     }   
+
+    function set_series($file_list){
+        global $_series;
+        $_SESSION['series'] = shell_exec('python /var/www/html/VMleak/series.py '.$file_list); 
+    }
+
+    function get_series(){
+        return $_series;
+    }
 
     /**************************************************************************
      * Builds a Checkbox group in an html form. Called from AJAX.

@@ -7,10 +7,12 @@
 
     //OLD WAY
     //$output = shell_exec('python /var/www/html/VMleak/external.py '.$filenum);//' 2>&1'
-    //$series = shell_exec('python /var/www/html/VMleak/series.py '.$filenum);//' 2>&1'
+    //$series = shell_exec('python /var/www/html/VMleak/series.py '.generate_full_file_list($filenum));//' 2>&1'
+    //echo $series;
 
     //BETTER WAY
     $series = generate_series_data(generate_full_file_list($filenum));
+    //echo $series;
     $output = generate_delta( generate_full_file_list($filenum) ); 
 ?>
 <!DOCTYPE html>
@@ -137,13 +139,24 @@
 		    $.ajax({
                         url: 'viewcontroller.php',
                         type: 'POST',
-                        data: {'function': 'get_series', 'file_list': list},
+                        data: {'function': 'set_series', 'file_list': list},
 			success: function(str){
-			    /*TODO: Make this work... Using a Session variable for now...*/
-			    series = str;
+			    alert(str);
 			}
                     })
+
+/*		    $.ajax({
+                        url: 'viewcontroller.php',
+                        type: 'POST',
+                        data: {'function': 'get_series', 'file_list': list},
+			success: function(str){
+			    console.log(str);
+			    //TODO: Make this work... Using a Session variable for now...
+			    series = str;
+			}
+                    })*/
 		).done(function() {
+		    <?php echo "console.log(".$_SESSION['series'].");";?>
                     update_chart(delta, series);
                 });
                 
@@ -202,15 +215,15 @@
 	     * Updates the chart with with new data.
 	     *****************************************************************/
 	    function update_chart(delta, series){
-	        
+	        //console.log("UC"+series); 
 	        updatePlot(delta, series);
 		plot1.replot();
 	    }
 
 	    function updatePlot(delta, _series){
-                console.log("IN UPADTEPLOT: SESSION ::"+<?php echo "\"".$_SESSION['file_list']."\"";?>);
+                //console.log("IN UPADTEPLOT: _series ::"+_series);
 
-                plot1 = $.jqplot('chart1', delta, {     
+                options = {     
                     highlighter: {
                         sizeAdjust: 14,
                         tooltipLocation: 'n',
@@ -239,15 +252,16 @@
                         show: true,
                         zoom: true
                     },
-	            series: [ <?php echo generate_series_data($_SESSION['file_list']);?> ]  
-                });
+	            series: [ <?php echo $_SESSION['series'];?> ]  
+                };
+                plot1 = $.jqplot('chart1', delta, options);
             }
 
 	    
         </script>
 
 
-        <div><?php echo var_dump($_SESSION['file_list']); ?></div></br>
+        <div><?php echo var_dump($series);?></div> 
 	<div><?php echo "OUTPUT:".$output; ?></div>
         <script class="include" type="text/javascript" src="/dist/jquery.jqplot.js"></script>
         <script type="text/javascript" src="/dist/syntaxhighlighter/scripts/shCore.min.js"></script>
