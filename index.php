@@ -7,12 +7,14 @@
 
     //OLD WAY
     //$output = shell_exec('python /var/www/html/VMleak/external.py '.$filenum);//' 2>&1'
-    //$series = shell_exec('python /var/www/html/VMleak/series.py '.generate_full_file_list($filenum));//' 2>&1'
-    //echo $series;
+    $series = shell_exec('python /var/www/html/VMleak/series.py '.generate_full_file_list($filenum));//' 2>&1'
+    echo $series;
 
     //BETTER WAY
     $series = generate_series_data(generate_full_file_list($filenum));
-    //echo $series;
+    echo "</br>";
+    echo $series;
+
     $output = generate_delta( generate_full_file_list($filenum) ); 
 ?>
 <!DOCTYPE html>
@@ -67,7 +69,7 @@
 
 	<script class="code" type="text/javascript">
 
-            var plot1;
+            plot1 = undefined;
 
             function generate_checkbox(file_list){
                 $.ajax({
@@ -121,46 +123,30 @@
 	     * is called on a successful return and will update the chart.
 	     *****************************************************************/
 	    $("#checkbox_group").change(function() { 
-                var list = $("input[name=file_name]:checked").map( function () { return this.value; } ).get().join(" ");
+                var list = $("input:checkbox:checked").map( function () { return this.value; } ).get().join(" ");
 		console.log("LIST IN ONCHANGE: "+list);
                 var delta = [];
 		var series = "";
-
-
-                $.when(
-		    $.ajax({
-                        url: 'viewcontroller.php',
-                        type: 'POST',
-                        data: {'function': 'get_delta', 'file_list': list},
-			success: function(str){
-			    delta = JSON.parse(str);    
-			}
-                    }), 
-		    $.ajax({
-                        url: 'viewcontroller.php',
-                        type: 'POST',
-                        data: {'function': 'set_series', 'file_list': list},
-			success: function(str){
-			    alert(str);
-			}
-                    })
-
-/*		    $.ajax({
-                        url: 'viewcontroller.php',
-                        type: 'POST',
-                        data: {'function': 'get_series', 'file_list': list},
-			success: function(str){
-			    console.log(str);
-			    //TODO: Make this work... Using a Session variable for now...
-			    series = str;
-			}
-                    })*/
-		).done(function() {
-		    <?php echo "console.log(".$_SESSION['series'].");";?>
-                    update_chart(delta, series);
-                });
-                
-            });
+                <?php $_SESSION['series'] = "";?>
+		$.ajax({
+                    url: 'viewcontroller.php',
+                    type: 'POST',
+                    data: {'function': 'get_delta', 'file_list': list},
+		    success: function(str0){
+		        delta = JSON.parse(str0);
+                        //alert("1");
+		        $.ajax({
+                            url: 'viewcontroller.php',
+                            type: 'POST',
+                            data: {'function': 'get_series', 'file_list': list},
+			    success: function(str1){
+			        series = JSON.parse("["+str1+"]") 
+                                update_chart(delta, series );
+			    }//end success
+                        })//end ajax
+		    }//end success
+                })//end ajax
+            });//end change()
 
  
 	    /*************************************************************************
@@ -201,6 +187,7 @@
                     },
 	            series:[ <?php echo $series;?> ], 
                 });
+                //console.log(plot1.toSource());
 
                 //OTHER FUNCTIONS TO LOAD AT THE START
 		generate_checkbox('<?php echo generate_full_file_list($filenum);?>');
@@ -215,14 +202,17 @@
 	     * Updates the chart with with new data.
 	     *****************************************************************/
 	    function update_chart(delta, series){
-	        //console.log("UC"+series); 
+	        //alert("3");
+	        console.log(typeof series); 
 	        updatePlot(delta, series);
 		plot1.replot();
+		//alert("5");
 	    }
 
 	    function updatePlot(delta, _series){
                 //console.log("IN UPADTEPLOT: _series ::"+_series);
-
+                //alert("4");
+		var options = {};
                 options = {     
                     highlighter: {
                         sizeAdjust: 14,
@@ -252,8 +242,12 @@
                         show: true,
                         zoom: true
                     },
-	            series: [ <?php echo $_SESSION['series'];?> ]  
+	            series: [  ]  
                 };
+		//alert(JSON.stringify( options, null, 4));
+		
+		options.series = _series;
+	        		
                 plot1 = $.jqplot('chart1', delta, options);
             }
 

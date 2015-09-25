@@ -45,7 +45,19 @@
      * the graph.
      *************************************************************************/
     function generate_series_data($file_list){
-        $output = shell_exec('python /var/www/html/VMleak/series.py '.$file_list);
+        //$output = shell_exec('python /var/www/html/VMleak/series.py '.$file_list);
+	$arr = explode(" ", $file_list);
+	$size = count($arr);
+	$i = 0;
+        foreach($arr as $file){
+	    $i++;
+	
+	    if($i < $size){
+	        $output = $output.'{ "highlighter": { "formatString": "'.$file.': %s, %s"}, "label": "'.$file.'" },';
+	    } else {
+	        $output = $output.'{ "highlighter": { "formatString": "'.$file.': %s, %s"}, "label": "'.$file.'" }';
+	    }
+	}
         //set_series($output); 
 	return $output;
     }   
