@@ -76,7 +76,8 @@ try:
             #mystr = mystr + " new:" + str(new) + " old:" + str(old)
             #mystr = mystr + " usage:" + str(usage) 
             #print mystr
-	    
+	    elements[i].append(usage)
+ 
 	    #print strbuffer + str(usage) 
 	#end: if i > 0:
 	i = i + 1

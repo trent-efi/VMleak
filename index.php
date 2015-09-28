@@ -6,26 +6,28 @@
 //    $filenum = 10;
 
     //OLD WAY
-    //$output = shell_exec('python /var/www/html/VMleak/external.py '.$filenum);//' 2>&1'
-    $series = shell_exec('python /var/www/html/VMleak/series.py '.generate_full_file_list($filenum));//' 2>&1'
-    echo $series;
+    //$output = shell_exec('python /var/www/html/py/external.py '.$filenum);//' 2>&1'
+    //$series = shell_exec('python /var/www/html/py/series.py '.generate_full_file_list($filenum));//' 2>&1'
+    //echo $series;
 
     //BETTER WAY
     $series = generate_series_data(generate_full_file_list($filenum));
-    echo "</br>";
-    echo $series;
+    //echo "</br>";
+    //echo $series;
 
     $output = generate_delta( generate_full_file_list($filenum) ); 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Memory Leak Data:</title>    
+        <title>Memory Leak Data:</title>
+        <link rel="stylesheet" type="text/css" href="http://w2ui.com/src/w2ui-1.4.3.min.css" />	
         <link class="include" rel="stylesheet" type="text/css" href="/dist/jquery.jqplot.min.css" />
         <link type="text/css" rel="stylesheet" href="/dist/syntaxhighlighter/styles/shCoreDefault.min.css" />
         <link type="text/css" rel="stylesheet" href="/dist/syntaxhighlighter/styles/shThemejqPlot.min.css" />
 	<link REL="StyleSheet" TYPE="text/css" HREF="style.css"> 
         <script class="include" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="http://w2ui.com/src/w2ui-1.4.3.min.js"></script>	
         <script type="text/javascript" src="script.js"></script>	
     </head>
     <body>
@@ -34,12 +36,23 @@
         <center>
         <table id="main_table">
 	    <tr>
-		<td id="row"><div id="checkbox_group"></div><div><input type="file" id="files" name="files[]" multiple /></div></td>	    
+		<td id="row">
+		    <div id="checkbox_group"></div>
+		    <div>
+		        <input type="file" id="files" name="files[]" multiple style="display: none;" />
+		        <input id="button_size" type="button" onclick="add_files();" value="Add Files"></input>
+	            </div>
+		    <div>
+		        <button id="button_size" value="reset" type="button" onclick="plot1.resetZoom();">Reset Zoom</button>
+		    </div>
+		    <div>
+		        <button id="button_size" type="button" onclick="location.reload();">Reset Graph</button>
+		    </div>
+		</td>	    
 	        <td id="row">
 		    <center><h1>Compared Data Useage Between Resets During Testing:</h1></center>
-	            <center><div id="chart1" style="height:700px; width:1600px;"></div></center>
-	            <div style="padding-top:20px"><button value="reset" type="button" onclick="plot1.resetZoom();">Reset Zoom</button></div>
-                </td>
+	            <center><div id="chart1" style="height:700px; width:1600px;"></div></center>    
+		</td>
 	    </tr>
         </table>
 	</center>
@@ -50,19 +63,39 @@
 	<script class="code" type="text/javascript">
             plot1 = undefined;
 
+	    function add_files(){
+	        $("#files").click();
+	    }
+
             $('#chart1').bind('jqplotDataClick', function (ev, seriesIndex, pointIndex, data) {
                 $.ajax({
 		    data: {"function":"get_node_details", "file_name": plot1.options.series[seriesIndex].label, "index": pointIndex },
 		    url: "viewcontroller.php",
 		    method: "POST",
 		    success: function(str){
-		        alert(str);
+		        //alert(str);
+			//$('#popup1').w2popup();
+			w2popup.open({
+                            title   : 'Node Details:',
+                            body    : str
+                        });
 		    }
 		});
 	            
                 //alert(JSON.stringify(plot1.options) + "\n" + seriesIndex + "\n" + plot1.options.series[seriesIndex].label + "\n" + pointIndex + "\n" + data );
             });
 
+            state = 0;
+
+            function myclose(){
+	        if(state == 1){
+		state = 0;
+	        console.log("IN MY CLOSE");
+	        w2popup.close();
+		} else {
+		    state = 1;
+		}
+	    }
 
             document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	
@@ -78,6 +111,7 @@
 		
 	        $("#checkbox_group").append(str);
                 add_to_checkboxes();
+		files = [];
 	    }
 
 
@@ -266,10 +300,8 @@
 
 	    
         </script>
-
-
-        <div><?php echo var_dump($series);?></div> 
-	<div><?php echo "OUTPUT:".$output; ?></div>
+        <div><?php //echo var_dump($series);?></div> 
+	<div><?php //echo "OUTPUT:".$output; ?></div>
         <script class="include" type="text/javascript" src="/dist/jquery.jqplot.js"></script>
         <script type="text/javascript" src="/dist/syntaxhighlighter/scripts/shCore.min.js"></script>
         <script type="text/javascript" src="/dist/syntaxhighlighter/scripts/shBrushJScript.min.js"></script>

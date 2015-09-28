@@ -10,7 +10,7 @@ p1 = Popen("ls -t /var/www/html/VMleak/*xt*.txt | head -n "+arg, shell=True, std
 output = p1.communicate()[0]
 output = output.replace('\n', ' ').replace("/var/www/html/VMleak/", "")
 
-result = 'python /var/www/html/VMleak/parse.py ' + output 
+result = 'python /var/www/html/py/parse.py ' + output 
 p2 = Popen( result, shell=True, stdout=PIPE )
 result = p2.communicate()[0]
 

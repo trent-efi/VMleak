@@ -22,7 +22,7 @@
      * I/O functions on log files.
      *************************************************************************/
     function generate_delta($file_list){
-        $output = shell_exec('python /var/www/html/VMleak/parse.py '.$file_list);
+        $output = shell_exec('python /var/www/html/py/parse.py '.$file_list);
 	return $output;
     }
 
@@ -64,7 +64,7 @@
 
     function set_series($file_list){
         global $_series;
-        $_SESSION['series'] = shell_exec('python /var/www/html/VMleak/series.py '.$file_list); 
+        $_SESSION['series'] = shell_exec('python /var/www/html/py/series.py '.$file_list); 
     }
 
     function get_series(){
@@ -89,7 +89,7 @@
     }
 
     function get_node_details($file_name, $index){
-        $output = shell_exec('python /var/www/html/VMleak/node_details.py '.$file_name.' '.$index);
+        $output = shell_exec('python /var/www/html/py/node_details.py '.$file_name.' '.$index);
         return $output;
     }
 ?>
