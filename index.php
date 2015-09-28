@@ -205,10 +205,10 @@
                     },
 	            axes: {
                         xaxis: {
-                            label: 'Resets per Test Run ',
+                            label: 'PID Block Number',
 		            tickInterval: 1
                         } 
-                    },
+                    }, 
 	            grid: {
                         backgroundColor: '#EBEBEB',
                         borderWidth: 0,
@@ -262,7 +262,7 @@
                     },
 	            axes: {
                         xaxis: {
-                            label: 'Resets per Test Run ',
+                            label: 'PID Block Number',
 		            tickInterval: 1
                         } 
                     },
