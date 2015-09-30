@@ -62,14 +62,12 @@
 				
 				$('#fileTreeDemo_1').fileTree({ root: '/', script: 'connectors/jqueryFileTree.php' }, function(file) { 
 					//alert(file);
-                                        file = file.substring( (file.lastIndexOf("/")+1 ));
-					file = "<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\""+file+"\" checked>"+file+"</div>";
+                                        sub_file = file.substring( (file.lastIndexOf("/")+1 ));
+					str = "<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\""+file+"\" checked>"+sub_file+"</div>";
 
 					//parent.test(file);
-					parent.append_checkboxes(file);
-				});
-				
-			
+					parent.append_checkboxes(str);
+				});	
 			});
 		</script>
 

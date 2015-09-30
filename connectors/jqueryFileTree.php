@@ -1,5 +1,4 @@
 <?php
-echo "<script>console.log(\"hello\")</script>";
 //
 // jQuery File Tree PHP Connector
 //

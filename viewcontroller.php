@@ -37,12 +37,32 @@
     function generate_full_file_list($filenum){
         global $file_path;
         $output = shell_exec('ls -t '.$file_path.'*xt*.txt | head -n '.$filenum);
+	//echo addslashes($output);
 	$output = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $output);
+	//echo $output;
         $output = str_replace($file_path," ",$output);
+	//echo $output;
         $output = substr($output, 1);
-	
+        //echo $output;
+
 	return $output;
     }
+
+    function generate_full_filepath_list($filenum){
+        global $file_path;
+        $output = shell_exec('ls -t '.$file_path.'*xt*.txt | head -n '.$filenum);
+	//$output = escapeshellarg($output);
+	$output = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $output);
+	//echo $output;
+        $output = str_replace(".txt",".txt ",$output);
+	//echo $output;
+        $output = rtrim($output);
+        //echo $output;
+
+	return $output;
+    }
+
+
 
     /**************************************************************************
      * Generates a string used by JQplot to handel the tooltip and legend for
@@ -55,11 +75,13 @@
 	$i = 0;
         foreach($arr as $file){
 	    $i++;
-	
+
+            $sub_str = basename($file);
+
 	    if($i < $size){
-	        $output = $output.'{ "highlighter": { "formatString": "'.$file.': %s, %s"}, "label": "'.$file.'" },';
+	        $output = $output.'{ "highlighter": { "formatString": "'.$sub_str.': %s, %s"}, "label": "'.$sub_str.'" },';
 	    } else {
-	        $output = $output.'{ "highlighter": { "formatString": "'.$file.': %s, %s"}, "label": "'.$file.'" }';
+	        $output = $output.'{ "highlighter": { "formatString": "'.$sub_str.': %s, %s"}, "label": "'.$sub_str.'" }';
 	    }
 	}
         //set_series($output); 
@@ -77,7 +99,8 @@
        	$result = "";
 
         foreach($arr as $value){
-	    $result = $result."<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\"".$value."\" checked>".$value."</div>";
+	    $sub_str = basename($value);
+	    $result = $result."<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\"".$value."\" checked>".$sub_str."</div>";
 	}
 
         return $result;

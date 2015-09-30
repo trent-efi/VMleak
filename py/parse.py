@@ -33,7 +33,8 @@ try:
 	
         if i >= 0:
 	    elements.append([])
-            f = open( file_path + arg, 'rt')
+            #f = open( file_path + arg, 'rt')
+	    f = open(arg, 'rt')
             first = 1
             prev = curr = ""
             new = old = 0

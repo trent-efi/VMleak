@@ -10,12 +10,15 @@
     //$series = shell_exec('python /var/www/html/py/series.py '.generate_full_file_list($filenum));//' 2>&1'
     //echo $series;
 
+    //$fullpath = generate_full_filepath_list($filenum);
+    //echo $fullpath;
     //BETTER WAY
-    $series = generate_series_data(generate_full_file_list($filenum));
+    $series = generate_series_data(generate_full_filepath_list($filenum));
     //echo "</br>";
     //echo $series;
 
-    $output = generate_delta( generate_full_file_list($filenum) ); 
+    $output = generate_delta( generate_full_filepath_list($filenum) );
+    //echo $output;
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,7 +71,8 @@
             plot1 = undefined;//our classwide jqplot chart object
 
             /******************************************************************
-	     * Function for click event from html button.
+	     * Function for click event from html button to add files to the 
+	     * checkbox group.
 	     *****************************************************************/
 	    function add_files(){
 	        //$("#files").click();//old way to add file from client side... not server side :(
@@ -134,7 +138,7 @@
 	     *****************************************************************/
             function generate_checkbox(file_list){
                 $.ajax({
-		    data: {"function":"build_checkboxes", "file_list":"<?php echo generate_full_file_list($filenum); ?>"},
+		    data: {"function":"build_checkboxes", "file_list":file_list},
 		    url: "viewcontroller.php",
 		    method: "POST",
 		    success: function(str){
@@ -249,7 +253,7 @@
                 });
 
                 //OTHER FUNCTIONS TO LOAD AT THE START
-		generate_checkbox('<?php echo generate_full_file_list($filenum);?>');	
+		generate_checkbox('<?php echo generate_full_filepath_list($filenum);?>');	
 	    });
 
             /******************************************************************
