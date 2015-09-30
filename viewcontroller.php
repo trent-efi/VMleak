@@ -3,6 +3,8 @@
     session_start();
 
     $filenum = 4;
+    $python_path = '/var/www/html/py/';
+    $file_path = '/var/www/html/VMleak/';
     //$file_list = "";
     $_series = "INITIAL";
 
@@ -22,7 +24,8 @@
      * I/O functions on log files.
      *************************************************************************/
     function generate_delta($file_list){
-        $output = shell_exec('python /var/www/html/py/parse.py '.$file_list);
+        global $python_path;
+        $output = shell_exec('python '.$python_path.'parse.py '.$file_list);
 	return $output;
     }
 
@@ -32,9 +35,10 @@
      * Returns a string.
      *************************************************************************/
     function generate_full_file_list($filenum){
-        $output = shell_exec('ls -t /var/www/html/VMleak/*xt*.txt | head -n '.$filenum);
+        global $file_path;
+        $output = shell_exec('ls -t '.$file_path.'*xt*.txt | head -n '.$filenum);
 	$output = preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $output);
-        $output = str_replace("/var/www/html/VMleak/"," ",$output);
+        $output = str_replace($file_path," ",$output);
         $output = substr($output, 1);
 	
 	return $output;
@@ -62,15 +66,6 @@
 	return $output;
     }   
 
-    function set_series($file_list){
-        global $_series;
-        $_SESSION['series'] = shell_exec('python /var/www/html/py/series.py '.$file_list); 
-    }
-
-    function get_series(){
-        return $_series;
-    }
-
     /**************************************************************************
      * Builds a Checkbox group in an html form. Called from AJAX.
      *************************************************************************/
@@ -89,7 +84,8 @@
     }
 
     function get_node_details($file_name, $index){
-        $output = shell_exec('python /var/www/html/py/node_details.py '.$file_name.' '.$index);
+        global $python_path;
+        $output = shell_exec('python '.$python_path.'node_details.py '.$file_name.' '.$index);
         return $output;
     }
 ?>

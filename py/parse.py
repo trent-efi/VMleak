@@ -17,6 +17,8 @@
 
 import sys
 
+file_path = "/var/www/html/VMleak/"
+
 try:
     #print "TOP: parse.py"
     i = -1
@@ -26,12 +28,12 @@ try:
     for arg in sys.argv:
         arg = arg.strip()
         #f = open(arg, 'rt')
-	path = "/var/www/html/VMleak/" + arg
+	path = file_path + arg
 	#print path
 	
         if i >= 0:
 	    elements.append([])
-            f = open('/var/www/html/VMleak/' + arg, 'rt')
+            f = open( file_path + arg, 'rt')
             first = 1
             prev = curr = ""
             new = old = 0

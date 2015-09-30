@@ -1,5 +1,6 @@
 import sys
 
+file_path = "/var/www/html/VMleak/"
 
 try:
     num = len(sys.argv)
@@ -17,7 +18,7 @@ try:
         line_num = 1
 	start_line = 1
 
-        f = open('/var/www/html/VMleak/' + name, 'rt')
+        f = open( file_path + name, 'rt')
         for line in f:
 	    
             mylist = line.replace(' ','').split(',')
