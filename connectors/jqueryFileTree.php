@@ -19,8 +19,6 @@ echo "<script>console.log(\"hello\")</script>";
 
 $_POST['dir'] = urldecode($_POST['dir']);
 
-$value = $_POST['dir'];
-echo $value;
 if( file_exists($root . $_POST['dir']) ) {
 	$files = scandir($root . $_POST['dir']);
 	natcasesort($files);

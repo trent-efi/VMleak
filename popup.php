@@ -38,8 +38,8 @@
 			}
 			
 			.demo {
-				width: 200px;
-				height: 400px;
+				width: 100%;
+				height: 100%;
 				border-top: solid 1px #BBB;
 				border-left: solid 1px #BBB;
 				border-bottom: solid 1px #FFF;
@@ -61,7 +61,12 @@
 			$(document).ready( function() {
 				
 				$('#fileTreeDemo_1').fileTree({ root: '/', script: 'connectors/jqueryFileTree.php' }, function(file) { 
-					alert(file);
+					//alert(file);
+                                        file = file.substring( (file.lastIndexOf("/")+1 ));
+					file = "<div><input id=\"boxes\" type=\"checkbox\" name=\"file_name\" value=\""+file+"\" checked>"+file+"</div>";
+
+					//parent.test(file);
+					parent.append_checkboxes(file);
 				});
 				
 			
@@ -72,7 +77,7 @@
 	
 	<body>
 		
-	
+                
 		<div class="example">
 			<h2>Default options</h2>
 			<div id="fileTreeDemo_1" class="demo"></div>
@@ -81,3 +86,5 @@
 	</body>
 	
 </html>
+
+
