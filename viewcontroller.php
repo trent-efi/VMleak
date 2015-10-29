@@ -12,9 +12,10 @@
     switch($action){
         case 'build_checkboxes': $file_list = $_POST['file_list']; echo build_checkboxes($file_list); break;
 	case 'get_delta': $file_list = $_POST['file_list']; echo generate_delta($file_list); break;
+	case 'get_multirip_delta': $file_list = $_POST['file_list']; echo generate_multirip_delta($file_list); break;
 	case 'get_series': $file_list = $_POST['file_list']; echo generate_series_data($file_list); break;
 	case 'set_series': $file_list = $_POST['file_list']; set_series($file_list); echo $_SESSION['series']; break;
-	case 'get_node_details': $file_name = $_POST['file_name']; $index = $_POST['index']; echo get_node_details($file_name, $index); break;
+	case 'get_node_details': $file_name = $_POST['file_name']; $index = $_POST['index']; echo get_node_details($file_name, $index); break;	
     }
 
 //{ "highlighter": { "formatString": "737384xt4.txt: %s, %s"}, "label": "737384xt4.txt"}, { "highlighter": { "formatString": "737364xt4.txt: %s, %s"}, "label": "737364xt4.txt" }, 
@@ -28,6 +29,13 @@
         $output = shell_exec('python '.$python_path.'parse.py '.$file_list);
 	return $output;
     }
+
+    function generate_multirip_delta($file_list){
+        global $python_path;
+        $output = shell_exec('python '.$python_path.'multirip_parse.py '.$file_list);
+    
+        return $output; 
+    }    
 
     /**************************************************************************
      * Calls external Python script to generate a list of file names. Takes in
@@ -63,7 +71,6 @@
     }
 
 
-
     /**************************************************************************
      * Generates a string used by JQplot to handel the tooltip and legend for
      * the graph.
@@ -87,6 +94,11 @@
         //set_series($output); 
 	return $output;
     }   
+
+    function generate_multirip_series_data($file_list){
+        
+        return $output;
+    }
 
     /**************************************************************************
      * Builds a Checkbox group in an html form. Called from AJAX.

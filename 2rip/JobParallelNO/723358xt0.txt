@@ -1,0 +1,376 @@
+++ (before_all) ,  2015-07-14:09:20:35 , Fiery.exe , 1844 , 10053656 KB
+++ (before_all) ,  2015-07-14:09:20:36 , ripper.exe_NOT_FOUND
+--
+++ (wait_ready) ,  2015-07-14:09:20:45 , Fiery.exe , 1844 , 10052624 KB
+++ (wait_ready) ,  2015-07-14:09:20:46 , ripper.exe_NOT_FOUND
+--
+++ (multirip_prepare) ,  2015-07-14:09:25:06 , Fiery.exe , 1396 , 10353068 KB
+++ (multirip_prepare) ,  2015-07-14:09:25:09 , ripper.exe , 712 , 3329460 KB
+--
+++ (wait_ready) ,  2015-07-14:09:25:21 , Fiery.exe , 1396 , 10529616 KB
+++ (wait_ready) ,  2015-07-14:09:25:23 , ripper.exe , 712 , 3341948 KB
+--
+++ (printConfig) ,  2015-07-14:09:27:22 , Fiery.exe , 1396 , 10601984 KB
+++ (printConfig) ,  2015-07-14:09:27:23 , ripper.exe , 712 , 3567472 KB
+--
+++ (PS_defaults_UIC_ok) ,  2015-07-14:09:27:31 , Fiery.exe , 1396 , 10600952 KB
+++ (PS_defaults_UIC_ok) ,  2015-07-14:09:27:32 , ripper.exe , 712 , 3567472 KB
+--
+++ (hqa-connect-loop) ,  2015-07-14:09:27:47 , Fiery.exe , 1396 , 10599920 KB
+++ (hqa-connect-loop) ,  2015-07-14:09:27:47 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-get-ppd) ,  2015-07-14:09:27:56 , Fiery.exe , 1396 , 10599920 KB
+++ (hqa-get-ppd) ,  2015-07-14:09:27:56 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-polyconnect) ,  2015-07-14:09:28:07 , Fiery.exe , 1396 , 10598888 KB
+++ (hqa-polyconnect) ,  2015-07-14:09:28:07 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-download-v1) ,  2015-07-14:09:28:22 , Fiery.exe , 1396 , 10620424 KB
+++ (hqa-download-v1) ,  2015-07-14:09:28:22 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-download-v2) ,  2015-07-14:09:28:35 , Fiery.exe , 1396 , 10620424 KB
+++ (hqa-download-v2) ,  2015-07-14:09:28:35 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-initialevent) ,  2015-07-14:09:28:44 , Fiery.exe , 1396 , 10621456 KB
+++ (hqa-initialevent) ,  2015-07-14:09:28:45 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-statusevent) ,  2015-07-14:09:29:03 , Fiery.exe , 1396 , 10621456 KB
+++ (hqa-statusevent) ,  2015-07-14:09:29:04 , ripper.exe , 712 , 3567472 KB
+--
+++ (hqa-profile) ,  2015-07-14:09:29:20 , Fiery.exe , 1396 , 10621456 KB
+++ (hqa-profile) ,  2015-07-14:09:29:21 , ripper.exe , 712 , 3567472 KB
+--
+++ (hqa-scopes) ,  2015-07-14:09:29:29 , Fiery.exe , 1396 , 10621456 KB
+++ (hqa-scopes) ,  2015-07-14:09:29:30 , ripper.exe , 712 , 3567472 KB
+--
+++ (hqa-features) ,  2015-07-14:09:29:38 , Fiery.exe , 1396 , 10621456 KB
+++ (hqa-features) ,  2015-07-14:09:29:39 , ripper.exe , 712 , 3567472 KB
+--
+++ (hqa-keyvalue) ,  2015-07-14:09:29:49 , Fiery.exe , 1396 , 10620424 KB
+++ (hqa-keyvalue) ,  2015-07-14:09:29:50 , ripper.exe , 712 , 3567472 KB
+--
+++ (hqa-sourcefile) ,  2015-07-14:09:30:04 , Fiery.exe , 1396 , 10620424 KB
+++ (hqa-sourcefile) ,  2015-07-14:09:30:05 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-directrun) ,  2015-07-14:09:30:21 , Fiery.exe , 1396 , 10625584 KB
+++ (hqa-directrun) ,  2015-07-14:09:30:22 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-previewcheck-v1) ,  2015-07-14:09:30:54 , Fiery.exe , 1396 , 10624552 KB
+++ (hqa-previewcheck-v1) ,  2015-07-14:09:30:55 , ripper.exe , 712 , 3568504 KB
+--
+++ (hqa-previewcheck-v2) ,  2015-07-14:09:31:23 , Fiery.exe , 1396 , 10624552 KB
+++ (hqa-previewcheck-v2) ,  2015-07-14:09:31:24 , ripper.exe , 712 , 3568868 KB
+--
+++ (hqa-printstress) ,  2015-07-14:09:32:16 , Fiery.exe , 1396 , 10624600 KB
+++ (hqa-printstress) ,  2015-07-14:09:32:17 , ripper.exe , 712 , 3567836 KB
+--
+++ (hqa-riptime) ,  2015-07-14:09:33:46 , Fiery.exe , 1396 , 10624600 KB
+++ (hqa-riptime) ,  2015-07-14:09:33:46 , ripper.exe , 712 , 3567836 KB
+--
+++ (hqa-printacct) ,  2015-07-14:09:36:56 , Fiery.exe , 1396 , 10624600 KB
+++ (hqa-printacct) ,  2015-07-14:09:36:57 , ripper.exe , 712 , 3568868 KB
+--
+++ (hqa-cancelstress) ,  2015-07-14:09:49:14 , Fiery.exe , 1396 , 10624600 KB
+++ (hqa-cancelstress) ,  2015-07-14:09:49:15 , ripper.exe , 712 , 3567836 KB
+--
+++ (hqa-joborder) ,  2015-07-14:09:52:08 , Fiery.exe , 1396 , 10623568 KB
+++ (hqa-joborder) ,  2015-07-14:09:52:08 , ripper.exe , 712 , 3568868 KB
+--
+++ (setpassword) ,  2015-07-14:09:52:17 , Fiery.exe , 1396 , 10624600 KB
+++ (setpassword) ,  2015-07-14:09:52:17 , ripper.exe , 712 , 3568868 KB
+--
+++ (connectloop) ,  2015-07-14:09:52:34 , Fiery.exe , 1396 , 10624600 KB
+++ (connectloop) ,  2015-07-14:09:52:34 , ripper.exe , 712 , 3568868 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:09:57:30 , Fiery.exe , 1396 , 10623568 KB
+++ (chkTestCmpGold) ,  2015-07-14:09:57:31 , ripper.exe , 712 , 3567836 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:10:17:11 , Fiery.exe , 1396 , 10624600 KB
+++ (chkTestCmpGold) ,  2015-07-14:10:17:12 , ripper.exe , 712 , 3567836 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:10:19:40 , Fiery.exe , 1396 , 10645904 KB
+++ (chkTestCmpGold) ,  2015-07-14:10:19:41 , ripper.exe , 712 , 3575012 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:10:22:50 , Fiery.exe , 1396 , 10645904 KB
+++ (chkTestCmpGold) ,  2015-07-14:10:22:50 , ripper.exe , 712 , 3575012 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:10:31:08 , Fiery.exe , 1396 , 10650000 KB
+++ (chkTestCmpGold) ,  2015-07-14:10:31:08 , ripper.exe , 712 , 3575012 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:10:37:13 , Fiery.exe , 1396 , 10650000 KB
+++ (chkTestCmpGold) ,  2015-07-14:10:37:14 , ripper.exe , 712 , 3575012 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:10:38:40 , Fiery.exe , 1396 , 10650000 KB
+++ (chkTestCmpGold) ,  2015-07-14:10:38:41 , ripper.exe , 712 , 3573980 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:10:45:15 , Fiery.exe , 1396 , 10673620 KB
+++ (chkTestCmpGold) ,  2015-07-14:10:45:16 , ripper.exe , 712 , 3573980 KB
+--
+++ (Fiery_ETS2) ,  2015-07-14:10:45:20 , Fiery.exe , 1396 , 10673620 KB
+++ (Fiery_ETS2) ,  2015-07-14:10:45:21 , ripper.exe , 712 , 3573980 KB
+--
+++ (feature_list_tool) ,  2015-07-14:10:48:01 , Fiery.exe , 1396 , 10674652 KB
+++ (feature_list_tool) ,  2015-07-14:10:48:02 , ripper.exe , 712 , 3575012 KB
+--
+++ (chkIntentTicketXML) ,  2015-07-14:10:48:12 , Fiery.exe , 1396 , 10673620 KB
+++ (chkIntentTicketXML) ,  2015-07-14:10:48:13 , ripper.exe , 712 , 3575012 KB
+--
+++ (dicttool) ,  2015-07-14:10:48:21 , Fiery.exe , 1396 , 10673620 KB
+++ (dicttool) ,  2015-07-14:10:48:22 , ripper.exe , 712 , 3575012 KB
+--
+++ (testFierysLessLog) ,  2015-07-14:10:49:46 , Fiery.exe , 1396 , 10673620 KB
+++ (testFierysLessLog) ,  2015-07-14:10:49:46 , ripper.exe , 712 , 3573980 KB
+--
+++ (papercatalogvalidator) ,  2015-07-14:10:49:55 , Fiery.exe , 1396 , 10674652 KB
+++ (papercatalogvalidator) ,  2015-07-14:10:49:56 , ripper.exe , 712 , 3573980 KB
+--
+++ (Server_Restart) ,  2015-07-14:10:52:47 , Fiery.exe , 5732 , 10560944 KB
+++ (Server_Restart) ,  2015-07-14:10:52:48 , ripper.exe , 6284 , 3542224 KB
+--
+++ (printConfig) ,  2015-07-14:10:54:02 , Fiery.exe , 5732 , 10607352 KB
+++ (printConfig) ,  2015-07-14:10:54:03 , ripper.exe , 6284 , 3567576 KB
+--
+++ (reboot) ,  2015-07-14:10:58:13 , Fiery.exe , 1656 , 10354344 KB
+++ (reboot) ,  2015-07-14:10:58:27 , ripper.exe , 1636 , 587020 KB
+--
+++ (printConfig) ,  2015-07-14:11:00:33 , Fiery.exe , 1656 , 10616592 KB
+++ (printConfig) ,  2015-07-14:11:00:34 , ripper.exe , 1636 , 3567532 KB
+--
+++ (wait_ready) ,  2015-07-14:11:00:42 , Fiery.exe , 1656 , 10616592 KB
+++ (wait_ready) ,  2015-07-14:11:00:42 , ripper.exe , 1636 , 3567532 KB
+--
+++ (deleteJobs) ,  2015-07-14:11:00:53 , Fiery.exe , 1656 , 10615608 KB
+++ (deleteJobs) ,  2015-07-14:11:00:53 , ripper.exe , 1636 , 3567532 KB
+--
+++ (multirip_test) ,  2015-07-14:11:01:44 , Fiery.exe , 1656 , 10614548 KB
+++ (multirip_test) ,  2015-07-14:11:01:45 , ripper.exe , 1636 , 3568928 KB
+--
+++ (Optimized) ,  2015-07-14:11:33:41 , Fiery.exe , 1656 , 10632788 KB
+++ (Optimized) ,  2015-07-14:11:33:42 , ripper.exe , 1636 , 3570976 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:37:24 , Fiery.exe , 1656 , 10632788 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:37:25 , ripper.exe , 1636 , 3569944 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:37:53 , Fiery.exe , 1656 , 10631756 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:37:54 , ripper.exe , 1636 , 3569944 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:38:47 , Fiery.exe , 1656 , 10639292 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:38:47 , ripper.exe , 1636 , 3570976 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:39:43 , Fiery.exe , 1656 , 10638260 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:39:43 , ripper.exe , 1636 , 3569944 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:40:40 , Fiery.exe , 1656 , 10637228 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:40:41 , ripper.exe , 1636 , 3570976 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:41:37 , Fiery.exe , 1656 , 10638260 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:41:38 , ripper.exe , 1636 , 3569944 KB
+--
+++ (testFierys) ,  2015-07-14:11:42:08 , Fiery.exe , 1656 , 10640324 KB
+++ (testFierys) ,  2015-07-14:11:42:09 , ripper.exe , 1636 , 3569944 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:42:35 , Fiery.exe , 1656 , 10640324 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:42:36 , ripper.exe , 1636 , 3570976 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:43:02 , Fiery.exe , 1656 , 10640324 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:43:03 , ripper.exe , 1636 , 3570976 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:43:44 , Fiery.exe , 1656 , 10655484 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:43:45 , ripper.exe , 1636 , 3569944 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:44:24 , Fiery.exe , 1656 , 10656516 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:44:24 , ripper.exe , 1636 , 3569944 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:44:49 , Fiery.exe , 1656 , 10656516 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:44:49 , ripper.exe , 1636 , 3570976 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:47:14 , Fiery.exe , 1656 , 10677048 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:47:15 , ripper.exe , 1636 , 3570976 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:48:43 , Fiery.exe , 1656 , 10677048 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:48:44 , ripper.exe , 1636 , 3569944 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:49:06 , Fiery.exe , 1656 , 10677048 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:49:07 , ripper.exe , 1636 , 3570976 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:49:41 , Fiery.exe , 1656 , 10676016 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:49:42 , ripper.exe , 1636 , 3570976 KB
+--
+++ (Apache_Running_Test_Case) ,  2015-07-14:11:49:50 , Fiery.exe , 1656 , 10676016 KB
+++ (Apache_Running_Test_Case) ,  2015-07-14:11:49:51 , ripper.exe , 1636 , 3570976 KB
+--
+++ (wait_ready) ,  2015-07-14:11:49:59 , Fiery.exe , 1656 , 10677048 KB
+++ (wait_ready) ,  2015-07-14:11:50:00 , ripper.exe , 1636 , 3569944 KB
+--
+++ (colorDict_tool) ,  2015-07-14:11:52:08 , Fiery.exe , 1012 , 10565176 KB
+++ (colorDict_tool) ,  2015-07-14:11:52:09 , ripper.exe , 3056 , 3561484 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:53:47 , Fiery.exe , 1012 , 10601004 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:53:47 , ripper.exe , 3056 , 3565352 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:54:14 , Fiery.exe , 1012 , 10607340 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:54:15 , ripper.exe , 3056 , 3566748 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:54:35 , Fiery.exe , 1012 , 10607340 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:54:36 , ripper.exe , 3056 , 3566748 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:55:17 , Fiery.exe , 1012 , 10627628 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:55:18 , ripper.exe , 3056 , 3565716 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:55:50 , Fiery.exe , 1012 , 10628660 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:55:51 , ripper.exe , 3056 , 3567884 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:56:09 , Fiery.exe , 1012 , 10628660 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:56:10 , ripper.exe , 3056 , 3567884 KB
+--
+++ (setup_color_profile) ,  2015-07-14:11:56:18 , Fiery.exe , 1012 , 10628660 KB
+++ (setup_color_profile) ,  2015-07-14:11:56:19 , ripper.exe , 3056 , 3568916 KB
+--
+++ (setup_color_profile) ,  2015-07-14:11:56:27 , Fiery.exe , 1012 , 10627628 KB
+++ (setup_color_profile) ,  2015-07-14:11:56:28 , ripper.exe , 3056 , 3568916 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:57:31 , Fiery.exe , 1012 , 10628660 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:57:32 , ripper.exe , 3056 , 3568916 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:11:59:14 , Fiery.exe , 1012 , 10630708 KB
+++ (chkTestCmpGold) ,  2015-07-14:11:59:15 , ripper.exe , 3056 , 3569932 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:00:22 , Fiery.exe , 1012 , 10630708 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:00:22 , ripper.exe , 3056 , 3570964 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:01:13 , Fiery.exe , 1012 , 10629676 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:01:13 , ripper.exe , 3056 , 3570964 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:02:24 , Fiery.exe , 1012 , 10630708 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:02:25 , ripper.exe , 3056 , 3569932 KB
+--
+++ (setup_color_profile) ,  2015-07-14:12:02:33 , Fiery.exe , 1012 , 10629676 KB
+++ (setup_color_profile) ,  2015-07-14:12:02:34 , ripper.exe , 3056 , 3569932 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:03:22 , Fiery.exe , 1012 , 10630708 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:03:23 , ripper.exe , 3056 , 3570964 KB
+--
+++ (setup_color_profile) ,  2015-07-14:12:03:31 , Fiery.exe , 1012 , 10630708 KB
+++ (setup_color_profile) ,  2015-07-14:12:03:32 , ripper.exe , 3056 , 3570964 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:04:16 , Fiery.exe , 1012 , 10629676 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:04:17 , ripper.exe , 3056 , 3569932 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:04:27 , Fiery.exe , 1012 , 10630708 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:04:28 , ripper.exe , 3056 , 3569932 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:07:21 , Fiery.exe , 1012 , 10630708 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:07:21 , ripper.exe , 3056 , 3570964 KB
+--
+++ (setup_color_profile) ,  2015-07-14:12:07:30 , Fiery.exe , 1012 , 10630708 KB
+++ (setup_color_profile) ,  2015-07-14:12:07:30 , ripper.exe , 3056 , 3570964 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:09:11 , Fiery.exe , 1012 , 10841204 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:09:12 , ripper.exe , 3056 , 3569932 KB
+--
+++ (setup_color_profile) ,  2015-07-14:12:09:20 , Fiery.exe , 1012 , 10841204 KB
+++ (setup_color_profile) ,  2015-07-14:12:09:21 , ripper.exe , 3056 , 3587156 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:10:05 , Fiery.exe , 1012 , 10840172 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:10:06 , ripper.exe , 3056 , 3587156 KB
+--
+++ (setup_color_profile) ,  2015-07-14:12:10:14 , Fiery.exe , 1012 , 10840172 KB
+++ (setup_color_profile) ,  2015-07-14:12:10:15 , ripper.exe , 3056 , 3587156 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:11:31 , Fiery.exe , 1012 , 10840172 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:11:32 , ripper.exe , 3056 , 3587156 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:12:26 , Fiery.exe , 1012 , 10841204 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:12:27 , ripper.exe , 3056 , 3587156 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:13:22 , Fiery.exe , 1012 , 10840172 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:13:22 , ripper.exe , 3056 , 3586124 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:14:25 , Fiery.exe , 1012 , 10849396 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:14:25 , ripper.exe , 3056 , 3587156 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:15:08 , Fiery.exe , 1012 , 10849396 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:15:09 , ripper.exe , 3056 , 3586124 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:15:51 , Fiery.exe , 1012 , 10904876 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:15:52 , ripper.exe , 3056 , 3587156 KB
+--
+++ (colorDict_tool) ,  2015-07-14:12:18:00 , Fiery.exe , 160 , 10572108 KB
+++ (colorDict_tool) ,  2015-07-14:12:18:01 , ripper.exe , 4044 , 3561360 KB
+--
+++ (ENGR_FTS_Color) ,  2015-07-14:12:18:05 , Fiery.exe , 160 , 10570044 KB
+++ (ENGR_FTS_Color) ,  2015-07-14:12:18:06 , ripper.exe , 4044 , 3561360 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:18:52 , Fiery.exe , 160 , 10602740 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:18:53 , ripper.exe , 4044 , 3555168 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:31:40 , Fiery.exe , 160 , 10640504 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:31:41 , ripper.exe , 4044 , 3565024 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:12:31:51 , Fiery.exe , 160 , 10640504 KB
+++ (chkTestCmpGold) ,  2015-07-14:12:31:51 , ripper.exe , 4044 , 3565024 KB
+--
+++ (fakeVideoControl) ,  2015-07-14:12:32:20 , Fiery.exe , 160 , 10639472 KB
+++ (fakeVideoControl) ,  2015-07-14:12:32:21 , ripper.exe , 4044 , 3563992 KB
+--
+++ (Network_LPR) ,  2015-07-14:12:33:41 , Fiery.exe , 160 , 10642744 KB
+++ (Network_LPR) ,  2015-07-14:12:33:42 , ripper.exe , 4044 , 3567756 KB
+--
+++ (Certificate) ,  2015-07-14:12:33:50 , Fiery.exe , 160 , 10641712 KB
+++ (Certificate) ,  2015-07-14:12:33:51 , ripper.exe , 4044 , 3567756 KB
+--
+++ (Certificate) ,  2015-07-14:12:33:59 , Fiery.exe , 160 , 10641712 KB
+++ (Certificate) ,  2015-07-14:12:34:00 , ripper.exe , 4044 , 3567756 KB
+--
+++ (Certificate) ,  2015-07-14:12:34:12 , Fiery.exe , 160 , 10642744 KB
+++ (Certificate) ,  2015-07-14:12:34:13 , ripper.exe , 4044 , 3566724 KB
+--
+++ (Certificate) ,  2015-07-14:12:34:21 , Fiery.exe , 160 , 10642744 KB
+++ (Certificate) ,  2015-07-14:12:34:22 , ripper.exe , 4044 , 3566724 KB
+--
+++ (Certificate) ,  2015-07-14:12:34:30 , Fiery.exe , 160 , 10642744 KB
+++ (Certificate) ,  2015-07-14:12:34:31 , ripper.exe , 4044 , 3566724 KB
+--
+++ (APPE_tf) ,  2015-07-14:12:46:00 , Fiery.exe , 1744 , 10350688 KB
+++ (APPE_tf) ,  2015-07-14:12:46:04 , ripper.exe , 4508 , 608668 KB
+--
+++ (PS_Security) ,  2015-07-14:12:49:46 , Fiery.exe , 5456 , 10558996 KB
+++ (PS_Security) ,  2015-07-14:12:49:46 , ripper.exe , 5088 , 3556324 KB
+--
+++ (PS_Security) ,  2015-07-14:12:52:07 , Fiery.exe , 5768 , 10555076 KB
+++ (PS_Security) ,  2015-07-14:12:52:12 , Fiery.exe , 5768 , 10555076 KB
+++ (PS_Security) ,  2015-07-14:12:52:13 , ripper.exe , 5744 , 3559408 KB
+--
+++ (Server_Backup) ,  2015-07-14:12:56:19 , Fiery.exe , 5768 , 10554036 KB
+++ (Server_Backup) ,  2015-07-14:12:56:20 , ripper.exe , 5744 , 3557344 KB
+--
+++ (Server_Restore) ,  2015-07-14:13:11:34 , Fiery.exe , 1756 , 10556136 KB
+++ (Server_Restore) ,  2015-07-14:13:11:35 , ripper.exe , 2708 , 3557216 KB
+--
+++ (VIPP_Install) ,  2015-07-14:13:16:13 , Fiery.exe , 1784 , 10565864 KB
+++ (VIPP_Install) ,  2015-07-14:13:16:14 , ripper.exe , 2268 , 3560564 KB
+--
+++ (setFSP) ,  2015-07-14:13:16:26 , Fiery.exe , 1784 , 10563800 KB
+++ (setFSP) ,  2015-07-14:13:16:27 , ripper.exe , 2268 , 3558500 KB
+--
+++ (chkTestCmpGold) ,  2015-07-14:13:17:31 , Fiery.exe , 1784 , 10563888 KB
+++ (chkTestCmpGold) ,  2015-07-14:13:17:32 , ripper.exe , 2268 , 3556436 KB
+--
+++ (Schedule_Print) ,  2015-07-14:13:22:51 , Fiery.exe , 1784 , 10592620 KB
+++ (Schedule_Print) ,  2015-07-14:13:22:52 , ripper.exe , 2268 , 3564868 KB
+--
+++ (locale_tool) ,  2015-07-14:13:26:48 , Fiery.exe , 1764 , 10358656 KB
+++ (locale_tool) ,  2015-07-14:13:26:51 , ripper.exe , 4312 , 601500 KB
+--
+++ (ENGR_FTS) ,  2015-07-14:13:26:58 , Fiery.exe , 1764 , 10359688 KB
+++ (ENGR_FTS) ,  2015-07-14:13:27:09 , ripper.exe , 4312 , 3340956 KB
+--
+++ (Flame45_Release) ,  2015-07-14:13:27:17 , Fiery.exe , 1764 , 10539332 KB
+++ (Flame45_Release) ,  2015-07-14:13:27:19 , ripper.exe , 4312 , 3545340 KB
+--
+++ (testFierysLessLog) ,  2015-07-14:13:56:03 , Fiery.exe , 1764 , 10858044 KB
+++ (testFierysLessLog) ,  2015-07-14:13:56:03 , ripper.exe , 4312 , 3572096 KB
+--
+++ (retainTFsettings) ,  2015-07-14:13:56:12 , Fiery.exe , 1764 , 10858044 KB
+++ (retainTFsettings) ,  2015-07-14:13:56:12 , ripper.exe , 4312 , 3572096 KB
+--

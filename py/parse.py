@@ -16,11 +16,12 @@
 #//////////////////////////////////////////////////////////////////////////////
 
 import sys
+import pdb
 
 file_path = "/var/www/html/VMleak/"
 
+#pdb.set_trace()
 try:
-    #print "TOP: parse.py"
     i = -1
     j = 0
     elements = []
@@ -42,7 +43,7 @@ try:
             #print "////////////////NEW/////////////////////////"
             for line in f:
                 list = line.replace(' ','').split(',')
-	        if len(list) > 3:
+	        if len(list) > 3 and list[2] == "Fiery.exe":
 
                     curr = list[3]
                     temp = int(list[4].strip().replace("KB", ""))

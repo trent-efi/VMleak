@@ -1,0 +1,90 @@
+++ (before_all) ,  2015-03-22:22:31:50 , Fiery.exe , 1776 , 9913300 KB
+++ (before_all) ,  2015-03-22:22:31:52 , ripper.exe_NOT_FOUND
+--
+++ (wait_ready) ,  2015-03-22:22:32:02 , Fiery.exe , 1776 , 9913300 KB
+++ (wait_ready) ,  2015-03-22:22:32:03 , ripper.exe_NOT_FOUND
+--
+++ (multirip_prepare) ,  2015-03-22:22:39:05 , Fiery.exe , 1884 , 10231588 KB
+++ (multirip_prepare) ,  2015-03-22:22:39:10 , ripper.exe , 1504 , 573240 KB
+--
+++ (wait_ready) ,  2015-03-22:22:39:33 , Fiery.exe , 1884 , 10297212 KB
+++ (wait_ready) ,  2015-03-22:22:39:42 , ripper.exe , 1504 , 3311592 KB
+--
+++ (printConfig) ,  2015-03-22:22:42:06 , Fiery.exe , 1884 , 10491772 KB
+++ (printConfig) ,  2015-03-22:22:42:06 , ripper.exe , 1504 , 3519832 KB
+--
+++ (PS_defaults_UIC_ok) ,  2015-03-22:22:42:17 , Fiery.exe , 1884 , 10491772 KB
+++ (PS_defaults_UIC_ok) ,  2015-03-22:22:42:18 , ripper.exe , 1504 , 3519832 KB
+--
+++ (hqa-connect-loop) ,  2015-03-22:22:42:34 , Fiery.exe , 1884 , 10489708 KB
+++ (hqa-connect-loop) ,  2015-03-22:22:42:35 , ripper.exe , 1504 , 3519832 KB
+--
+++ (hqa-get-ppd) ,  2015-03-22:22:42:45 , Fiery.exe , 1884 , 10489708 KB
+++ (hqa-get-ppd) ,  2015-03-22:22:42:45 , ripper.exe , 1504 , 3519832 KB
+--
+++ (hqa-polyconnect) ,  2015-03-22:22:42:57 , Fiery.exe , 1884 , 10490740 KB
+++ (hqa-polyconnect) ,  2015-03-22:22:42:58 , ripper.exe , 1504 , 3517768 KB
+--
+++ (hqa-download-v1) ,  2015-03-22:22:43:14 , Fiery.exe , 1884 , 10490740 KB
+++ (hqa-download-v1) ,  2015-03-22:22:43:15 , ripper.exe , 1504 , 3516736 KB
+--
+++ (hqa-download-v2) ,  2015-03-22:22:43:27 , Fiery.exe , 1884 , 10490740 KB
+++ (hqa-download-v2) ,  2015-03-22:22:43:28 , ripper.exe , 1504 , 3516736 KB
+--
+++ (hqa-initialevent) ,  2015-03-22:22:43:36 , Fiery.exe , 1884 , 10490740 KB
+++ (hqa-initialevent) ,  2015-03-22:22:43:37 , ripper.exe , 1504 , 3516736 KB
+--
+++ (hqa-statusevent) ,  2015-03-22:22:43:58 , Fiery.exe , 1884 , 10489708 KB
+++ (hqa-statusevent) ,  2015-03-22:22:43:59 , ripper.exe , 1504 , 3516736 KB
+--
+++ (hqa-profile) ,  2015-03-22:22:44:23 , Fiery.exe , 1884 , 10490740 KB
+++ (hqa-profile) ,  2015-03-22:22:44:24 , ripper.exe , 1504 , 3516736 KB
+--
+++ (hqa-scopes) ,  2015-03-22:22:44:32 , Fiery.exe , 1884 , 10490740 KB
+++ (hqa-scopes) ,  2015-03-22:22:44:34 , ripper.exe , 1504 , 3516736 KB
+--
+++ (hqa-features) ,  2015-03-22:22:44:42 , Fiery.exe , 1884 , 10490740 KB
+++ (hqa-features) ,  2015-03-22:22:44:43 , ripper.exe , 1504 , 3516736 KB
+--
+++ (hqa-keyvalue) ,  2015-03-22:22:44:54 , Fiery.exe , 1884 , 10489708 KB
+++ (hqa-keyvalue) ,  2015-03-22:22:44:55 , ripper.exe , 1504 , 3516736 KB
+--
+++ (hqa-sourcefile) ,  2015-03-22:22:45:14 , Fiery.exe , 1884 , 10489708 KB
+++ (hqa-sourcefile) ,  2015-03-22:22:45:15 , ripper.exe , 1504 , 3518132 KB
+--
+++ (hqa-directrun) ,  2015-03-22:22:45:33 , Fiery.exe , 1884 , 10491772 KB
+++ (hqa-directrun) ,  2015-03-22:22:45:34 , ripper.exe , 1504 , 3518132 KB
+--
+++ (hqa-previewcheck-v1) ,  2015-03-22:22:46:08 , Fiery.exe , 1884 , 10491772 KB
+++ (hqa-previewcheck-v1) ,  2015-03-22:22:46:09 , ripper.exe , 1504 , 3518132 KB
+--
+++ (hqa-previewcheck-v2) ,  2015-03-22:22:46:40 , Fiery.exe , 1884 , 10491772 KB
+++ (hqa-previewcheck-v2) ,  2015-03-22:22:46:40 , ripper.exe , 1504 , 3516068 KB
+--
+++ (hqa-printstress) ,  2015-03-22:22:47:37 , Fiery.exe , 1884 , 10493876 KB
+++ (hqa-printstress) ,  2015-03-22:22:47:37 , ripper.exe , 1504 , 3516068 KB
+--
+++ (hqa-riptime) ,  2015-03-22:22:49:14 , Fiery.exe , 1884 , 10493876 KB
+++ (hqa-riptime) ,  2015-03-22:22:49:15 , ripper.exe , 1504 , 3532260 KB
+--
+++ (hqa-printacct) ,  2015-03-22:22:52:28 , Fiery.exe , 1884 , 10492844 KB
+++ (hqa-printacct) ,  2015-03-22:22:52:28 , ripper.exe , 1504 , 3532260 KB
+--
+++ (hqa-cancelstress) ,  2015-03-22:23:09:38 , Fiery.exe , 1884 , 10491812 KB
+++ (hqa-cancelstress) ,  2015-03-22:23:09:40 , ripper.exe , 1504 , 3532260 KB
+--
+++ (hqa-joborder) ,  2015-03-22:23:31:07 , Fiery.exe , 1884 , 10492844 KB
+++ (hqa-joborder) ,  2015-03-22:23:31:08 , ripper.exe , 1504 , 3532260 KB
+--
+++ (Fiery_ETS2) ,  2015-03-22:23:31:13 , Fiery.exe , 1884 , 10492844 KB
+++ (Fiery_ETS2) ,  2015-03-22:23:31:14 , ripper.exe , 1504 , 3532260 KB
+--
+++ (Flame45_Release) ,  2015-03-22:23:31:19 , Fiery.exe , 1884 , 10491812 KB
+++ (Flame45_Release) ,  2015-03-22:23:31:20 , ripper.exe , 1504 , 3532260 KB
+--
+++ (testFierysLessLog) ,  2015-03-23:00:14:00 , Fiery.exe , 1884 , 10748208 KB
+++ (testFierysLessLog) ,  2015-03-23:00:14:02 , ripper.exe , 1504 , 3537616 KB
+--
+++ (retainTFsettings) ,  2015-03-23:00:14:11 , Fiery.exe , 1884 , 10748208 KB
+++ (retainTFsettings) ,  2015-03-23:00:14:12 , ripper.exe , 1504 , 3537616 KB
+--

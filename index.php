@@ -14,11 +14,15 @@
     //echo $fullpath;
     //BETTER WAY
     $series = generate_series_data(generate_full_filepath_list($filenum));
-    //echo "</br>";
     //echo $series;
+
+    //$multirip_series = generate_multirip_series_data(generate_full_filepath_list($filenum));
+    //echo $multirip_series;
 
     $output = generate_delta( generate_full_filepath_list($filenum) );
     //echo $output;
+    $multirip = generate_multirip_delta(generate_full_filepath_list($filenum));
+    echo "MULTIRIP: ".$multirip;
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,26 +53,29 @@
 		        <input id="button_size" type="button" onclick="add_files();" value="Add Files"></input>
 	            </div>
 		    <div>
-		        <button id="button_size" value="reset" type="button" onclick="plot1.resetZoom();">Reset Zoom</button>
+		        <button id="button_size" value="reset" type="button" onclick="plot1.resetZoom(); plot1b.resetZoom();">Reset Zoom</button>
 		    </div>
 		    <div>
 		        <button id="button_size" type="button" onclick="location.reload();">Reset Graph</button>
 		    </div>
 		</td>	    
 	        <td id="row">
-		    <center><h1>Compared Data Useage Between Resets During Testing:</h1></center>
+		    <center><h1>Compared Data Useage During Single Rip Testing:</h1></center>
 	            <center><div id="chart1" style="height:700px; width:1600px;"></div></center>    
+		    <center><h1>Compared Data Useage During Multi Rip Testing:</h1></center>
+	            <center><div id="chart1b" style="height:700px; width:1600px;"></div></center>   
 		</td>
 	    </tr>
         </table>
 	</center>
-
+        
 
  
 
 	<script class="code" type="text/javascript">
-
-            plot1 = undefined;//our classwide jqplot chart object
+            myUNDEFINED = undefined;//undefined variable
+            plot1 = myUNDEFINED;//jqplot object Single Rip
+	    plot2 = myUNDEFINED;//jqplot object Multi Rip
 
             /******************************************************************
 	     * Function for click event from html button to add files to the 
@@ -81,6 +88,7 @@
 		    body      : '<iframe src="http://localhost/popup.php" style="width: 100%; height: 100%;"></iframe>',
 		    showClose : true
 		});//new way to add files from server side :)
+		//parent.append_checkboxes() is called from popup.php to append the checkboxes
 	    }
 
             /******************************************************************
@@ -169,12 +177,22 @@
                             type: 'POST',
                             data: {'function': 'get_series', 'file_list': list},
 			    success: function(str1){
-			        series = JSON.parse("["+str1+"]") 
-                                update_chart(delta, series );
+			        series = JSON.parse("["+str1+"]"); 
+                                update_chart0(delta, series );
+
+				$.ajax({
+				    url: 'viewcontroller.php',
+				    type: 'POST',
+				    data: {'function': 'get_multirip_delta', 'file_list': list},
+				    success: function(str2){
+				        delta1 = JSON.parse(str2);
+					update_chart1( delta1, series );
+				    }
+				});
 			    }//end success
-                        })//end ajax
+                        });//end ajax
 		    }//end success
-                })//end ajax
+                });//end ajax
 	    }//end add_to_checkboxes()
 
 
@@ -205,7 +223,18 @@
                             data: {'function': 'get_series', 'file_list': list},
 			    success: function(str1){
 			        series = JSON.parse("["+str1+"]") 
-                                update_chart(delta, series );
+                                update_chart0(delta, series );
+
+				$.ajax({
+				    url: 'viewcontroller.php',
+				    type: 'POST',
+				    data: {'function': 'get_multirip_delta', 'file_list': list},
+				    success: function(str2){
+				        delta1 = JSON.parse(str2);
+					update_chart1( delta1, series );
+				    }
+				});
+				
 			    }//end success
                         })//end ajax
 		    }//end success
@@ -251,6 +280,52 @@
                     },
 	            series:[ <?php echo $series;?> ], 
                 });
+                  
+
+    
+                var plot1b = $.jqplot('chart1b',<?php echo $multirip?>,{
+                    highlighter: {
+                        sizeAdjust: 14,
+                        tooltipLocation: 'n',
+                        tooltipAxes: 'y',
+                        formatString:'#serieLabel# - %s',
+                        useAxesFormatters: false
+                    },
+	            axes: {
+                        xaxis: {
+                            label: 'PID Block Number',
+		            tickInterval: 1
+                        } 
+                    }, 
+	            grid: {
+                        backgroundColor: '#EBEBEB',
+                        borderWidth: 0,
+                        gridLineColor: 'grey',
+                        gridLineWidth: 1,
+                        borderColor: 'black'
+                    },
+	            legend: {
+                        show: true,
+                        placement: 'inside'
+                    },
+                    cursor: {
+                        show: true,
+                        zoom: true
+                    },
+	            series:[ <?php echo $series;?> ],
+		});
+    
+                /*$('#chart1b').bind('jqplotDataHighlight', 
+                    function (ev, seriesIndex, pointIndex, data) {
+                        $('#info1b').html('series: '+seriesIndex+', point: '+pointIndex+', data: '+data);
+                    }
+                );*/
+    
+                /*$('#chart1b').bind('jqplotDataUnhighlight', 
+                    function (ev) {
+                        $('#info1b').html('Nothing');
+                    }
+                );*/
 
                 //OTHER FUNCTIONS TO LOAD AT THE START
 		generate_checkbox('<?php echo generate_full_filepath_list($filenum);?>');	
@@ -270,17 +345,22 @@
 	     * Calls updatePlot() to modify classwide chart object and calls 
 	     * replot() to redisplay the chart.
 	     *****************************************************************/
-	    function update_chart(delta, series){
+	    function update_chart0(delta, series){
 	        //console.log(typeof series); 
-	        updatePlot(delta, series);
+	        updatePlot0(delta, series);
 		plot1.replot();	
 	    }
 
+	    function update_chart1(delta, series){
+	        //console.log(typeof series); 
+	        updatePlot1(delta, series);
+		plot1b.replot();	
+	    }
 
             /******************************************************************
 	     * Updates the classwide chart object with with new data.
 	     *****************************************************************/
-	    function updatePlot(delta, _series){
+	    function updatePlot0(delta, _series){
                                 
 		var options = {};
                 options = {     
@@ -330,6 +410,58 @@
                 plot1 = $.jqplot('chart1', delta, options);
             }
 
+            /******************************************************************
+	     * Updates the classwide chart object with with new data.
+	     *****************************************************************/
+	    function updatePlot1(delta, _series){
+                                
+		var options = {};
+                options = {     
+                    highlighter: {
+                        sizeAdjust: 14,
+                        tooltipLocation: 'n',
+                        tooltipAxes: 'y',
+                        formatString:'#serieLabel# - %s',
+                        useAxesFormatters: false
+                    },
+	            axes: {
+                        xaxis: {
+                            label: 'PID Block Number',
+		            tickInterval: 1
+                        } 
+                    },
+	            grid: {
+                        backgroundColor: '#EBEBEB',
+                        borderWidth: 0,
+                        gridLineColor: 'grey',
+                        gridLineWidth: 1,
+                        borderColor: 'black'
+                    },
+	            legend: {
+                        show: true,
+                        placement: 'inside'
+                    },
+                    cursor: {
+                        show: true,
+                        zoom: true
+                    },
+	            series: [  ]  
+                };
+
+                if(Object.keys(delta).length == 0 ){
+		    delta = [[null]]; 
+		    options.legend.show = false;
+		} else {
+		    options.legend.show = true;
+		}
+
+		//console.log(JSON.stringify( _series, null, 4));
+		
+		//Updates our object's series object.
+		options.series = _series;
+	        		
+                plot1b = $.jqplot('chart1b', delta, options);
+            }
 	    
         </script>
 	<script class="include" type="text/javascript" src="/dist/jquery.jqplot.js"></script>

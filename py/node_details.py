@@ -1,4 +1,9 @@
+#localhost
 import sys
+import os.path, time
+
+#print "last modified: %s" % time.ctime(os.path.getmtime(file))
+#print "created: %s" % time.ctime(os.path.getctime(file))
 
 file_path = "/var/www/html/VMleak/"
 
@@ -22,7 +27,7 @@ try:
         for line in f:
 	    
             mylist = line.replace(' ','').split(',')
-	    if len(mylist) > 3:
+	    if len(mylist) > 3 and mylist[2] == "Fiery.exe":
                 curr = mylist[3]
 		temp_test = str(mylist[0])
                 temp_data = int(mylist[4].strip().replace("KB", ""))
@@ -47,7 +52,7 @@ try:
 			    old_test = old_test[:-1]
 			    new_test = new_test.replace('++(','')
 			    new_test = new_test[:-1]
-		            print "<div><div>File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b></div><center><button class=\"btn\" onclick=\"w2popup.close()\">OK</button></center></div>"	
+		            print "<div><div>File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b></br>Date Created: <b>"+time.ctime(os.path.getctime(file_path + name)) +"</b></div><center><button class=\"btn\" onclick=\"w2popup.close()\">OK</button></center></div>"	
                         start_line = line_num
                         prev = curr
 
@@ -70,7 +75,7 @@ try:
 	    old_test = old_test[:-1]
 	    new_test = new_test.replace('++(','')
 	    new_test = new_test[:-1]
-            print "File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b>"	
+            print "<div><div>File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b></br>Date Created: <b>"+time.ctime(os.path.getctime(file_path + name)) +"</b></div><center><button class=\"btn\" onclick=\"w2popup.close()\">OK</button></center></div>"
     #end else
     
 finally:
