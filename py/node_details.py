@@ -1,11 +1,7 @@
-#localhost
+#10.3.23.123
 import sys
 import os.path, time
-
-#print "last modified: %s" % time.ctime(os.path.getmtime(file))
-#print "created: %s" % time.ctime(os.path.getctime(file))
-
-file_path = "/var/www/html/VMleak/"
+import pdb
 
 try:
     num = len(sys.argv)
@@ -23,7 +19,8 @@ try:
         line_num = 1
 	start_line = 1
 
-        f = open( file_path + name, 'rt')
+        #pdb.start_trace()
+        f = open( name, 'rt')
         for line in f:
 	    
             mylist = line.replace(' ','').split(',')
@@ -52,7 +49,7 @@ try:
 			    old_test = old_test[:-1]
 			    new_test = new_test.replace('++(','')
 			    new_test = new_test[:-1]
-		            print "<div><div>File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b></br>Date Created: <b>"+time.ctime(os.path.getctime(file_path + name)) +"</b></div><center><button class=\"btn\" onclick=\"w2popup.close()\">OK</button></center></div>"	
+		            print "<div><div>File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b></br>Date Created: <b>"+time.ctime(os.path.getctime(name)) +"</b></div><center><button class=\"btn\" onclick=\"w2popup.close()\">OK</button></center></div>"
                         start_line = line_num
                         prev = curr
 
@@ -75,9 +72,10 @@ try:
 	    old_test = old_test[:-1]
 	    new_test = new_test.replace('++(','')
 	    new_test = new_test[:-1]
-            print "<div><div>File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b></br>Date Created: <b>"+time.ctime(os.path.getctime(file_path + name)) +"</b></div><center><button class=\"btn\" onclick=\"w2popup.close()\">OK</button></center></div>"
+            print "<div><div>File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b></br>Date Created: <b>"+time.ctime(os.path.getctime(name)) +"</b></div><center><button class=\"btn\" onclick=\"w2popup.close()\">OK</button></center></div>"
     #end else
     
 finally:
     f.close()
+
 

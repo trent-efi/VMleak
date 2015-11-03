@@ -15,7 +15,9 @@
 	case 'get_multirip_delta': $file_list = $_POST['file_list']; echo generate_multirip_delta($file_list); break;
 	case 'get_series': $file_list = $_POST['file_list']; echo generate_series_data($file_list); break;
 	case 'set_series': $file_list = $_POST['file_list']; set_series($file_list); echo $_SESSION['series']; break;
-	case 'get_node_details': $file_name = $_POST['file_name']; $index = $_POST['index']; echo get_node_details($file_name, $index); break;	
+	case 'get_node_details': $file_name = $_POST['file_name']; $index = $_POST['index']; echo get_node_details($file_name, $index); break;		
+	case 'get_multirip_node_details': $file_name = $_POST['file_name']; $index = $_POST['index']; echo get_multirip_node_details($file_name, $index); /*echo "ALL GOOD: ".$index." :: ".$file_name;*/ break;	
+	
     }
 
 //{ "highlighter": { "formatString": "737384xt4.txt: %s, %s"}, "label": "737384xt4.txt"}, { "highlighter": { "formatString": "737364xt4.txt: %s, %s"}, "label": "737364xt4.txt" }, 
@@ -86,10 +88,11 @@
             $sub_str = basename($file);
 
 	    if($i < $size){
-	        $output = $output.'{ "highlighter": { "formatString": "'.$sub_str.': %s, %s"}, "label": "'.$sub_str.'" },';
+	        $output = $output.'{ "highlighter": { "formatString": "'.$sub_str.': %s, %s"}, "label": "'.$sub_str.'", "filepath": "'.$file.'" },';
 	    } else {
-	        $output = $output.'{ "highlighter": { "formatString": "'.$sub_str.': %s, %s"}, "label": "'.$sub_str.'" }';
+	        $output = $output.'{ "highlighter": { "formatString": "'.$sub_str.': %s, %s"}, "label": "'.$sub_str.'", "filepath": "'.$file.'" }';
 	    }
+
 	}
         //set_series($output); 
 	return $output;
@@ -123,4 +126,11 @@
         $output = shell_exec('python '.$python_path.'node_details.py '.$file_name.' '.$index);
         return $output;
     }
+
+    function get_multirip_node_details($file_name, $index){
+        global $python_path;
+        $output = shell_exec('python '.$python_path.'multirip_node_details.py '.$file_name.' '.$index);
+        return $output;
+    }
+    
 ?>

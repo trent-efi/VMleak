@@ -104,8 +104,9 @@
 	     * will return the filename, test info, chart index, other stuff...
 	     *****************************************************************/
             $('#chart1').bind('jqplotDataClick', function (ev, seriesIndex, pointIndex, data) {
+	        console.log(plot1.options.series[seriesIndex].filepath)	    
                 $.ajax({
-		    data: {"function":"get_node_details", "file_name": plot1.options.series[seriesIndex].label, "index": pointIndex },
+		    data: {"function":"get_node_details", "file_name": plot1.options.series[seriesIndex].filepath, "index": pointIndex },
 		    url: "viewcontroller.php",
 		    method: "POST",
 		    success: function(str){
@@ -118,6 +119,27 @@
 		    }
 		});  
             });
+
+            /******************************************************************
+	     * Calls a w2popup when a node on the graph is clicked. AJAX call
+	     * will return the filename, test info, chart index, other stuff...
+	     *****************************************************************/
+            $('#chart1b').bind('jqplotDataClick', function (ev, seriesIndex, pointIndex, data) {
+                $.ajax({
+		    data: {"function":"get_multirip_node_details", "file_name": plot1.options.series[seriesIndex].filepath, "index": pointIndex },
+		    url: "viewcontroller.php",
+		    method: "POST",
+		    success: function(str){
+		        //alert(str);
+			//$('#popup1').w2popup();
+			w2popup.open({
+                            title   : 'Node Details:',
+                            body    : str
+                        });
+		    }
+		});  
+            });
+
 
             /******************************************************************
 	     * Event listener and function for old way of selecting files.
