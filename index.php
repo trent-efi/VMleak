@@ -22,7 +22,7 @@
     $output = generate_delta( generate_full_filepath_list($filenum) );
     //echo $output;
     $multirip = generate_multirip_delta(generate_full_filepath_list($filenum));
-    echo "MULTIRIP: ".$multirip;
+    //echo "MULTIRIP: ".$multirip;
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,6 +76,8 @@
             myUNDEFINED = undefined;//undefined variable
             plot1 = myUNDEFINED;//jqplot object Single Rip
 	    plot2 = myUNDEFINED;//jqplot object Multi Rip
+            REQUEST0 = null;
+	    REQUEST1 = null;
 
             /******************************************************************
 	     * Function for click event from html button to add files to the 
@@ -149,6 +151,7 @@
             document.getElementById('files').addEventListener('change', handleFileSelect, false);
             function handleFileSelect(evt) {
                 var files = evt.target.files; // FileList object
+		("HERE: "+files);
                 var str = ""; 
 
                 // files is a FileList of File objects. List some properties.
@@ -187,34 +190,43 @@
 		console.log("LIST IN ONCHANGE: "+list);
                 var delta = [];
 		var series = "";
-		$.ajax({
-                    url: 'viewcontroller.php',
-                    type: 'POST',
-                    data: {'function': 'get_delta', 'file_list': list},
-		    success: function(str0){
-		        delta = JSON.parse(str0);
-                        //alert("1");
-		        $.ajax({
-                            url: 'viewcontroller.php',
-                            type: 'POST',
-                            data: {'function': 'get_series', 'file_list': list},
-			    success: function(str1){
-			        series = JSON.parse("["+str1+"]"); 
-                                update_chart0(delta, series );
 
-				$.ajax({
-				    url: 'viewcontroller.php',
-				    type: 'POST',
-				    data: {'function': 'get_multirip_delta', 'file_list': list},
-				    success: function(str2){
-				        delta1 = JSON.parse(str2);
-					update_chart1( delta1, series );
-				    }
-				});
-			    }//end success
-                        });//end ajax
-		    }//end success
-                });//end ajax
+                if(null == REQUEST0){
+		    console.log("R0 == NULL");
+		} else {
+		    console.log("R0 != NULL");
+		    REQUEST0.abort();
+		}
+
+		REQUEST0 = $.ajax({
+                        url: 'viewcontroller.php',
+                        type: 'POST',
+                        data: {'function': 'get_delta', 'file_list': list},
+		        success: function(str0){
+		            delta = JSON.parse(str0);
+                            //alert("1");
+		            REQUEST0 = $.ajax({
+                                url: 'viewcontroller.php',
+                                type: 'POST',
+                                data: {'function': 'get_series', 'file_list': list},
+			        success: function(str1){
+			            series = JSON.parse("["+str1+"]"); 
+                                    update_chart0(delta, series );
+
+				    REQUEST0 = $.ajax({
+				        url: 'viewcontroller.php',
+				        type: 'POST',
+				        data: {'function': 'get_multirip_delta', 'file_list': list},
+				        success: function(str2){
+				            delta1 = JSON.parse(str2);
+					    update_chart1( delta1, series );
+					    REQUEST0 = null;
+				        }
+				    });
+			        }//end success
+                            });//end ajax
+		        }//end success
+                    });//end ajax
 	    }//end add_to_checkboxes()
 
 
@@ -232,34 +244,43 @@
                 var delta = [];
 		var series = "";
                 <?php $_SESSION['series'] = "";?>
-		$.ajax({
-                    url: 'viewcontroller.php',
-                    type: 'POST',
-                    data: {'function': 'get_delta', 'file_list': list},
-		    success: function(str0){
-		        delta = JSON.parse(str0);
-                        //alert("1");
-		        $.ajax({
-                            url: 'viewcontroller.php',
-                            type: 'POST',
-                            data: {'function': 'get_series', 'file_list': list},
-			    success: function(str1){
-			        series = JSON.parse("["+str1+"]") 
-                                update_chart0(delta, series );
 
-				$.ajax({
-				    url: 'viewcontroller.php',
-				    type: 'POST',
-				    data: {'function': 'get_multirip_delta', 'file_list': list},
-				    success: function(str2){
-				        delta1 = JSON.parse(str2);
-					update_chart1( delta1, series );
-				    }
-				});
+                if(null == REQUEST1){
+		    console.log("R1 == null")
+		} else {
+		    REQUEST1.abort();		
+		    console.log("R1 != null");
+		}
+
+		REQUEST1 = $.ajax({
+                        url: 'viewcontroller.php',
+                        type: 'POST',
+                        data: {'function': 'get_delta', 'file_list': list},
+		        success: function(str0){
+		            delta = JSON.parse(str0);
+                            //alert("1");
+		            REQUEST1 = $.ajax({
+                                url: 'viewcontroller.php',
+                                type: 'POST',
+                                data: {'function': 'get_series', 'file_list': list},
+			        success: function(str1){
+			            series = JSON.parse("["+str1+"]") 
+                                    update_chart0(delta, series );
+
+				    REQUEST1 = $.ajax({
+				        url: 'viewcontroller.php',
+				        type: 'POST',
+				        data: {'function': 'get_multirip_delta', 'file_list': list},
+				        success: function(str2){
+				            delta1 = JSON.parse(str2);
+					    update_chart1( delta1, series );
+					    REQUEST1 = null;
+				        }
+				    });
 				
-			    }//end success
-                        })//end ajax
-		    }//end success
+			        }//end success
+                            })//end ajax
+		        }//end success
                 })//end ajax
             });//end change()
 
@@ -368,15 +389,16 @@
 	     * replot() to redisplay the chart.
 	     *****************************************************************/
 	    function update_chart0(delta, series){
-	        //console.log(typeof series); 
+	        //console.log(typeof series);
+		//console.log("UPDATE CHART0")
 	        updatePlot0(delta, series);
 		plot1.replot();	
 	    }
 
 	    function update_chart1(delta, series){
-	        //console.log(typeof series); 
+	        //console.log("UPDATE CHART1");
 	        updatePlot1(delta, series);
-		plot1b.replot();	
+		//plot1b.replot();	
 	    }
 
             /******************************************************************
@@ -430,6 +452,7 @@
 		options.series = _series;
 	        		
                 plot1 = $.jqplot('chart1', delta, options);
+                //plot1.replot();
             }
 
             /******************************************************************
@@ -483,6 +506,7 @@
 		options.series = _series;
 	        		
                 plot1b = $.jqplot('chart1b', delta, options);
+		plot1b.replot();
             }
 	    
         </script>

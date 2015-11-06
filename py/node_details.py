@@ -66,6 +66,7 @@ try:
             #end if
 	    line_num = line_num + 1
         #end for
+	f.close()
 	if count == block:
 	    usage = new_data - old_data
             old_test = old_test.replace('++(', '')
@@ -74,8 +75,5 @@ try:
 	    new_test = new_test[:-1]
             print "<div><div>File Name: <b>" + name + "</b></br>Line Number: <b>" + str(start_line) +"</b></br>Starting Test Name: <b>" + str(old_test) + "</b></br>Ending Test Name: <b>" + str(new_test) + "</b></br>Graph Index: <b>" + str(count + 1)+"</b></br>PID: <b>" + prev + "</b></br>Data Used: <b>" + str(usage) + " KB</b></br>Date Created: <b>"+time.ctime(os.path.getctime(name)) +"</b></div><center><button class=\"btn\" onclick=\"w2popup.close()\">OK</button></center></div>"
     #end else
-    
-finally:
-    f.close()
-
-
+except:
+    print "<h1>ERROR</h1>"

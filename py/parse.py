@@ -76,19 +76,11 @@ try:
                     j = j + 1
             #end: for
             usage = new - old
-            #mystr = "prev:" + prev + " curr:" + curr
-            #mystr = mystr + " new:" + str(new) + " old:" + str(old)
-            #mystr = mystr + " usage:" + str(usage) 
-            #print mystr
 	    elements[i].append(usage)
- 
-	    #print strbuffer + str(usage) 
+            f.close()
 	#end: if i > 0:
 	i = i + 1
     #end: outer for loop
     print(elements)
-finally:
-    f.close()
-    #print "END: parse.py"
-    
-   
+except:
+    print "ERROR"

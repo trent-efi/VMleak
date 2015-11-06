@@ -84,12 +84,8 @@ try:
 		            new = temp 
             #end: for
             usage = new - old
-            #mystr = "prev:" + prev + " curr:" + curr
-            #mystr = mystr + " new:" + str(new) + " old:" + str(old)
-            #mystr = mystr + " usage:" + str(usage) 
-            #print mystr
-
 	    elements[i].append(usage) 
+	    f.close()	    
 	#end: if i > 0:
 	i = i + 1
     #end: outer for loop
