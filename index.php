@@ -61,9 +61,9 @@
 		</td>	    
 	        <td id="row">
 		    <center><h1>Compared Data Useage During Single Rip Testing:</h1></center>
-	            <center><div id="chart1" style="height:700px; width:1600px;"></div></center>    
+	            <center><div id="chart1" style="height:350px; width:1600px;"></div></center>    
 		    <center><h1>Compared Data Useage During Multi Rip Testing:</h1></center>
-	            <center><div id="chart1b" style="height:700px; width:1600px;"></div></center>   
+	            <center><div id="chart1b" style="height:350px; width:1600px;"></div></center>   
 		</td>
 	    </tr>
         </table>
